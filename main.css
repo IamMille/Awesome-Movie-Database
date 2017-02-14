@@ -1,0 +1,142 @@
+.stylish-input-group .input-group-addon{
+    /*background: white !important; */	
+	
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+	border-radius: 20px;
+	
+}
+.stylish-input-group button{
+	
+	border-radius: 20px;
+    border:0;
+    background:transparent;
+}
+
+#imaginary_container {
+	margin: 30px;
+}
+
+#movie{
+	width: 700px;
+	margin: auto;
+	height: auto;
+	border-radius: 20px;
+	border: 1px solid gray;
+	background-color: white;
+	font-family: verdana;
+	padding: 10px;
+	padding-left: 20px;
+	text-align: left;
+	font-size: 14px;
+}
+
+#poster {
+	
+	float: right; 
+	width: 150px;
+}
+
+.empty {
+	
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+video {
+	margin-left: 25%;
+	margin-top: 20px;
+
+}
+
+button {
+	background-color: #27ac27;
+	float: right; 
+	margin-right: 30px;
+	display: inline-block;
+	border: none; 
+	border-radius: 5px;
+	color: white; 
+	text-shadow: 2px 2px 5px #080808;
+	font-family: tahoma; 
+	padding-top: 5px;
+	padding-bottom: 5px; 
+	padding-left: 10px;
+	padding-right: 10px;
+	
+	   -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #5cd65c;
+    color: black;
+	/*text-shadow: 2px 2px 5px #2eb82e; */
+}
+
+
+.logo{
+
+ padding:auto;
+ text-align: center;
+  max-width: 100%;
+  height: auto;
+}
+
+
+body {
+    background-image:url("background1.png");
+	background-repeat: no-repeat;
+
+	   /*background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 100%;*/
+		
+	text-align: center;
+}
+
+.rubrik {
+	text-align: left;
+	  margin-left: 300px;
+	  font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 48px;
+	color: #4b4b4b;
+	color: rgba(75, 75, 75, 0.4)
+}
+
+.smRubrik {
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 30px;
+	color: #fd4b4b;
+	text-align: left;
+	padding-bottom: 7px;
+}
+
+.savedMovies {
+	width: 700px;
+	margin: auto;
+	height: 90px;
+	border-radius: 20px;
+	border: 1px solid gray;
+	background-color: white;
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 48px;
+	color: #fd4b4b;
+	text-align: left;
+	padding: 10px;
+	padding-left: 30px;
+	
+}
+
+.rate {
+	float: right; 
+	padding: 10px;
+}
