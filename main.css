@@ -140,3 +140,12 @@ body {
 	float: right; 
 	padding: 10px;
 }
+#searchResult{
+	margin-bottom:30px;
+	border-color:#ccc;
+	border-style: solid;
+	font-family: verdana;
+	
+	
+	
+}
