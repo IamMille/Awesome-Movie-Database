@@ -1,6 +1,6 @@
 window.onload = function(){
-document.getElementById("searchBar").addEventListener("keydown",search); 
-alert("test");
+document.getElementById("searchBar").addEventListener("keydown",search);
+
 
 
 
