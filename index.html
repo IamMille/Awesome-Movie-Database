@@ -13,6 +13,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+ 	<script src="js/classes.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/store.js"></script>
 
@@ -31,7 +32,7 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<div id="imaginary_container">
 				<div class="input-group stylish-input-group">
-					<input type="text" class="form-control" id="searchBar" placeholder="sök" >
+					<input type="text" class="form-control" id="searchBar" placeholder="sök" value="fight club">
 					<span class="input-group-addon">
 						<button type="submit" value="submit">
 							<span class="glyphicon glyphicon-search"></span>
@@ -64,9 +65,9 @@
 	Handling: A thief, who steals <br>corporate secrets through use of dream-sharing technology, <br>is given the inverse task of planting an idea into the mind of a... </p>
 				<br>
 				<img src="emptyrate.png" class="empty" alt="rating">
-				<button id="saveButton">TITTA SENARE</button>
+				<button id="saveButton" data-id="tt0137523">TITTA SENARE</button>
 				<br>
-				<a href="#" id="viewTrailer" data-id="${movie.imdbID}">Se trailer (bild här)</a>
+				<a href="#" id="viewTrailer" data-id="tt0137523">Se trailer (bild här)</a>
 				<video width="320" height="240" controls>
 	  			<source src="InceptionTrailerhd_512kb.mp4" type="video/mp4">
 					Your browser does not support the video tag.
@@ -85,7 +86,7 @@
 
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="savedMovies">
+			<div class="savedMovies" id="myMovies"> 
 			Rubrik <img src="emptyrate.png" class="rate" alt="rate">
 			</div>
 		</div>
