@@ -1,16 +1,16 @@
 .stylish-input-group .input-group-addon{
-    /*background: white !important; */	
-	
+    /*background: white !important; */
+
 }
 .stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
+	border-right:0;
+	box-shadow:0 0 0;
 	border-color:#ccc;
 	border-radius: 20px;
-	
+
 }
 .stylish-input-group button{
-	
+
 	border-radius: 20px;
     border:0;
     background:transparent;
@@ -35,13 +35,13 @@
 }
 
 #poster {
-	
-	float: right; 
+
+	float: right;
 	width: 150px;
 }
 
 .empty {
-	
+
 	width: 150px;
 	margin-bottom: 10px;
 }
@@ -54,20 +54,20 @@ video {
 
 button {
 	background-color: #27ac27;
-	float: right; 
+	float: right;
 	margin-right: 30px;
 	display: inline-block;
-	border: none; 
+	border: none;
 	border-radius: 5px;
-	color: white; 
+	color: white;
 	text-shadow: 2px 2px 5px #080808;
-	font-family: tahoma; 
+	font-family: tahoma;
 	padding-top: 5px;
-	padding-bottom: 5px; 
+	padding-bottom: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-	
-	   -webkit-transition-duration: 0.4s; 
+
+	   -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
 }
 
@@ -80,8 +80,10 @@ button:hover {
 
 .logo{
 
- padding:auto;
- text-align: center;
+  margin-top: 25px;
+  padding:auto;
+  text-align: center;
+
   max-width: 100%;
   height: auto;
 }
@@ -96,7 +98,7 @@ body {
         -moz-background-size: cover;
         -o-background-size: cover;
         height: 100%;*/
-		
+
 	text-align: center;
 }
 
@@ -133,10 +135,20 @@ body {
 	text-align: left;
 	padding: 10px;
 	padding-left: 30px;
-	
+
+
 }
 
 .rate {
-	float: right; 
+	float: right;
 	padding: 10px;
+}
+#searchResult{
+	margin-bottom:30px;
+	border-color:#ccc;
+	border-style: solid;
+	font-family: verdana;
+
+
+
 }
