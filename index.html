@@ -13,11 +13,11 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
- 	<script src="js/classes.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/store.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="rating.css">
 </head>
 
 <body>
@@ -63,8 +63,15 @@
 	Genre: Action, Adventure, Sci-Fi <br>
 	Actors: Leonardo DiCaprio, Joseph Gordon-Levitt,<br> Ellen Page, Tom Hardy
 	Handling: A thief, who steals <br>corporate secrets through use of dream-sharing technology, <br>is given the inverse task of planting an idea into the mind of a... </p>
-				<br>
-				<img src="emptyrate.png" class="empty" alt="rating">
+				<div class="rating">
+			    <span class="stars-container">
+		        <span id="star5" class="star"></span>
+		        <span id="star4" class="star"></span>
+		        <span id="star3" class="star"></span>
+		        <span id="star2" class="star"></span>
+		        <span id="star1" class="star"></span>
+			    </span>
+				</div>
 				<button id="saveButton" data-id="tt0137523">TITTA SENARE</button>
 				<br>
 				<a href="#" id="viewTrailer" data-id="tt0137523">Se trailer (bild här)</a>
@@ -79,14 +86,14 @@
 
 	<!-- Sparade filmer -->
 	<div class ="row">
-		<div class="col-sm-12">
+		<div class="col-sm-12" id="myMovies">
 			<div class="rubrik">Titta senare</div>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-12">
-			<div class="savedMovies" id="myMovies"> 
+			<div class="savedMovies" id="myMoviesRated">
 			Rubrik <img src="emptyrate.png" class="rate" alt="rate">
 			</div>
 		</div>
