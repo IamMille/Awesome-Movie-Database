@@ -3,10 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Awesome Movie Database</title>
-	
+
 	<link rel="icon" href="#">
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<!-- magnific-popup -->
 	<script src="js/magnific-popup-1.1.0.min.js" type="text/javascript"></script>
@@ -18,10 +21,6 @@
 	<script src="js/trailer.js"></script>
 	<script src="js/movieResults.js"></script>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
-	
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="css/rating.css">
 
@@ -30,9 +29,7 @@
 	<!--lOGO-->
 	<br>
 		<div class ="logo">
-	
 			<img src ="LOGO1.png">
-			
 		</div>
 	<!--logoEnd-->
 
@@ -49,9 +46,9 @@
 					</span>
 				</div>
 				<div id="searchResult">
-					<p>Expemple Expemple Expemple Expemple</p>
-					<p>Expemple Expemple Expemple Expemple</p>
-					<p>Expemple Expemple Expemple Expemple</p>
+					<p><a href="#" data-id="tt0137523" class="movie">Fight Club</a></p>
+					<p><a href="#" data-id="tt0110912" class="movie">Pulp Fiction</a></p>
+					<p><a href="#" data-id="tt0109830" class="movie">Forrest Gump</a></p>
 				</div>
       </div>
 
@@ -65,44 +62,40 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div id="movie">
-			<img src="posterexempel.jpg" id="poster" placeholder="poster">
-			<div class="smRubrik" id="rubrik">
-			Rubrik på film
-			</div>
-			<p id="year">Released: 16 Jul 2010</p><br>
-<p id="genre">Genre: Action, Adventure, Sci-Fi </p><br>
-<p id="actors">Actors: Leonardo DiCaprio, Joseph Gordon-Levitt,<br> Ellen Page, Tom Hardy</p>
-<p id="Handling">Handling: A thief, who steals <br>corporate secrets through use of dream-sharing technology, <br>is given the inverse task of planting an idea into the mind of a... </p>			
-			<div class="rating">
-			    <span class="stars-container">
-		        <span id="star5" class="star"></span>
-		        <span id="star4" class="star"></span>
-		        <span id="star3" class="star"></span>
-		        <span id="star2" class="star"></span>
-		        <span id="star1" class="star"></span>
-			    </span>
+				<div id="poster">
+
+				</div>
+				<div class="smRubrik" id="rubrik">
+				Rubrik på film
+				</div>
+				<p id="year">Released: 16 Jul 2010</p>
+				<p>Genre: <span id="genre">Action, Adventure, Sci-Fi </span></p>
+				<p id="actors">Actors: Leonardo DiCaprio, Joseph Gordon-Levitt,<br> Ellen Page, Tom Hardy</p>
+				<p id="plot">Handling: A thief, who steals <br>corporate secrets through use of dream-sharing technology, <br>is given the inverse task of planting an idea into the mind of a... </p>
+				<div class="rating">
+				    <span class="stars-container">
+			        <span id="star5" class="star"></span>
+			        <span id="star4" class="star"></span>
+			        <span id="star3" class="star"></span>
+			        <span id="star2" class="star"></span>
+			        <span id="star1" class="star"></span>
+				    </span>
 				</div>
 				<button id="saveButton" data-id="tt0137523">TITTA SENARE</button>
-				<br>
 				<div id="trailer">
 					<a href="#" id="viewTrailer" data-id="tt0137523">Se trailer (bild här)</a>
-					<video width="320" height="240" controls>
-		  			<source src="InceptionTrailerhd_512kb.mp4" type="video/mp4">
-						Your browser does not support the video tag.
-					</video>
 				</div>
-				
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
+
+
+
+
 	<!-- Sökresultat slut -->
 	<!--Sparade filmer-->
 	<br>
-	
+
 	<div class ="row">
 		<div class="col-sm-12" id="myMovies">
 			<div class="rubrik">Titta senare</div>
@@ -117,9 +110,9 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<br>
-	
+
 	<div class ="row">
 		<div class="col-sm-12">
 			<div class="rubrik">
@@ -135,9 +128,9 @@
 			</div>
 		</div>
 	</div>
-	
-	
-	
+
+
+
 	<!--Sparade filmer slut-->
 	</body>
 	</html>
