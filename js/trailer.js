@@ -54,7 +54,7 @@ window.addEventListener("load", function()
     .catch( err => {
       console.error("Fetch error ", err);
       $("#trailer").innerText = "Fetch " + err.statusText;
-    }); // end of ajax
+    }); // end of fetch
 
   }); // end onClick
 
