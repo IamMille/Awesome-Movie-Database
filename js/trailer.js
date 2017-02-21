@@ -45,7 +45,7 @@ window.addEventListener("load", function()
       var $j = jQuery.noConflict();
       $j(".video").magnificPopup({
         type: 'iframe',
-        iframe:{patterns:{youtube:{src:'http://www.youtube.com/embed/%id%?autoplay=1'}}}
+        iframe:{patterns:{youtube:{src:'https://www.youtube.com/embed/%id%?autoplay=1'}}}
       });
 
       //$("pre").text( JSON.stringify(data, null, 2) ); // print json
