@@ -37,12 +37,12 @@ window.addEventListener("load", function(){
           		console.log(movie.Title);
           		console.log(ajax.responseText);*/
 
-          		rubrik.innerHTML = `${movie.Title}` ;
+          		rubrik.innerHTML = `${movie.Title}`;
           		year.innerHTML = `${movie.Year} `;
           		plot.innerHTML = `${movie.Plot}`;
           		actors.innerHTML = `${movie.Actors}`;
           		genre.innerHTML = `${movie.Genre}`;
-          		poster.innerHTML = `<img src="${movie.Poster}" />`;
+          		poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
 
           	}
           };
