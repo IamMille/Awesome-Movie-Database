@@ -18,7 +18,7 @@ window.addEventListener("load", function(){
           let poster = document.getElementById("poster");
 
           // Skapa URL med querystring
-          let url = 'http://www.omdbapi.com/?i=';
+          let url = 'https://www.omdbapi.com/?i=';
           url += movieId;  // ändra denna
           url += '&plot=short&r=json';
 
