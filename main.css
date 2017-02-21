@@ -46,12 +46,6 @@
 	margin-bottom: 10px;
 }
 
-video {
-	margin-left: 25%;
-	margin-top: 20px;
-
-}
-
 button {
 	background-color: #27ac27;
 	float: right;
@@ -130,7 +124,7 @@ body {
 	background-color: white;
 	font-family: Century Gothic;
 	font-weight: bold;
-	font-size: 48px;
+	font-size: 1.5em;
 	color: #fd4b4b;
 	text-align: left;
 	padding: 10px;
