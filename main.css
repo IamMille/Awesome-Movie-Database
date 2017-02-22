@@ -1,5 +1,8 @@
+
+
 .stylish-input-group .input-group-addon{
     /*background: white !important; */
+	
 
 }
 .stylish-input-group .form-control{
@@ -14,14 +17,35 @@
 	border-radius: 20px;
     border:0;
     background:transparent;
+
+}
+
+#searchBar {
+	 
 }
 
 #imaginary_container {
-	margin: 30px;
+	margin: auto;
+	max-width: 700px;
+	text-align: center;
+	
+}      
+
+
+.header {
+	/*background-color: #868686;*/
+	background-image: url("LOGO.png");
+	background-repeat: no-repeat;
+	background-position: center top;
+/*background-size: contain;	*/
+height: 200px;
+	/*position: relative;*/ 
+	margin-bottom: 6%; 
 }
 
+
 #movie{
-	width: 700px;
+	max-width: 700px;
 	margin: auto;
 	height: auto;
 	border-radius: 20px;
@@ -30,13 +54,18 @@
 	font-family: verdana;
 	padding: 10px;
 	padding-left: 20px;
+	padding-bottom: 50px;
 	text-align: left;
 	font-size: 14px;
 }
 
+#info {
+	max-width: 450px; 
+}
+
 #poster {
 
-	float: right;
+	margin: auto; 
 	width: 150px;
 }
 
@@ -47,9 +76,9 @@
 }
 
 button {
-	background-color: #27ac27;
+	
 	float: right;
-	margin-right: 30px;
+	/*margin-right: 30px;*/
 	display: inline-block;
 	border: none;
 	border-radius: 5px;
@@ -71,10 +100,21 @@ button:hover {
 	/*text-shadow: 2px 2px 5px #2eb82e; */
 }
 
+#viewTrailer {
+	background-color: #0084cc;
+	float: left;
+	
+}
+
+#saveButton {
+	background-color: #27ac27;
+	float: right;
+	
+}
 
 .logo{
 
-  margin-top: 25px;
+  /*margin-top: 25px;*/
   padding:auto;
   text-align: center;
 
@@ -86,8 +126,12 @@ button:hover {
 body {
     background-image:url("background1.png");
 	background-repeat: no-repeat;
-
-	   /*background-size: cover;
+	background-position: center 50px;; 
+	
+	/*background-position: 0% 50%;*/
+	/*background-size: contain; */
+	
+	/*
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -97,9 +141,10 @@ body {
 }
 
 .rubrik {
-	text-align: left;
-	  margin-left: 300px;
-	  font-family: Century Gothic;
+	/*text-align: left;
+	margin: auto*/
+	position: relative;
+	font-family: Century Gothic;
 	font-weight: bold;
 	font-size: 48px;
 	color: #4b4b4b;
@@ -113,10 +158,16 @@ body {
 	color: #fd4b4b;
 	text-align: left;
 	padding-bottom: 7px;
+	/*margin-left: 10px;*/
+}
+
+p {
+	/*margin-left: 10px; */
+	
 }
 
 .savedMovies {
-	width: 700px;
+	max-width: 700px;
 	margin: auto;
 	height: 90px;
 	border-radius: 20px;
@@ -124,7 +175,7 @@ body {
 	background-color: white;
 	font-family: Century Gothic;
 	font-weight: bold;
-	font-size: 1.5em;
+	font-size: 3em;
 	color: #fd4b4b;
 	text-align: left;
 	padding: 10px;
@@ -146,3 +197,58 @@ body {
 
 
 }
+         
+.flex-container {
+	display: flex;
+	flex-direction: row; 
+	flex-wrap: wrap; 
+	
+	
+}
+
+.flex-item {
+	flex: 1 1 auto;
+	/*border: 1px solid black;*/
+}
+
+@media (max-width: 700px) {
+	#movie {
+		max-width: none; 
+		 
+	}
+	
+	.savedMovies {
+		
+		max-width: none;
+		height: auto;
+		text-align: center; 
+	}
+	
+	
+	.rate {
+		float: none; 
+		
+	}
+	
+	.rubrik {
+		font-size: 30px;
+		
+	}
+	
+
+}
+
+@media (max-width: 565px) {
+	
+	.header {
+	/*background: linear-gradient(black, white;*/
+	background-image: url("LOGOmini.png");
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: contain;	
+	height: 150px;
+	margin-bottom: 3%; 
+	}
+	
+}
+
