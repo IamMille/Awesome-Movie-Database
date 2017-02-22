@@ -9,7 +9,7 @@ window.onload=function(){
       return false;
     }
     httpRequest.onreadystatechange = mSvar;
-    httpRequest.open('GET', 'http://www.omdbapi.com/?s='+tit.value+'&r=json');
+    httpRequest.open('GET', 'https://www.omdbapi.com/?s='+tit.value+'&r=json');
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send();
 
