@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>Awesome Movie Database</title>
 
 	<!-- Latest compiled and minified CSS -->
@@ -25,15 +27,17 @@
 
 </head>
 	<body>
+	
 	<!--lOGO-->
-		<div class ="logo">
-			<img src ="LOGO1.png">
+		<div class="black">.
 		</div>
+		<div class="header">
+			<!--<img src="LOGO1.png" class="logo">-->
+	</div>
 	<!--logoEnd-->
 
 	<!--sökrutan-->
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-3">
+	
 			<div id="imaginary_container">
 				<div class="input-group stylish-input-group">
 					<input type="text" class="form-control" id="searchBar" placeholder="sök" value="">
@@ -49,20 +53,17 @@
 				</div>
       </div>
 
-    </div>
-	</div> <!-- end row -->
+    <!-- end row -->
 
 	<!---sökEnd-->
 
 	<!-- Sökresultat -->
 	<br>
-	<div class="row">
-		<div class="col-sm-12">
+	
 			<div id="movie">
-
-				<div id="poster">
-				</div>
-
+			<div class="flex-container">
+			
+			<div class="flex-item">
 				<div class="smRubrik" id="rubrik">
 				Inception (2010)
 				</div>
@@ -70,6 +71,14 @@
 				<p>Genre: <span id="genre">Action, Adventure, Sci-Fi </span></p>
 				<p id="actors">Actors: Leonardo DiCaprio, Joseph Gordon-Levitt,<br> Ellen Page, Tom Hardy</p>
 				<p id="plot">Handling: A thief, who steals <br>corporate secrets through use of dream-sharing technology, <br>is given the inverse task of planting an idea into the mind of a... </p>
+				</div>
+				<div class="flex-item">
+				<div id="poster">
+				<img src="posterexempel.jpg" width="150px" />
+				</div>
+			</div>
+				</div>
+				
 				<div class="rating">
 				    <span class="stars-container">
 			        <span id="star5" class="star"></span>
@@ -81,50 +90,46 @@
 				</div>
 				<button id="saveButton" data-id="tt0137523">TITTA SENARE</button>
 				<div id="trailer">
-					<a href="javascript:void(0);" id="viewTrailer" data-id="tt0137523">Se trailer</a>
+					<button id="viewTrailer" data-id="tt0137523">SE TRAILER</button>
 				</div>
 
 			</div>
-		</div>
-	</div>
 
 	<!-- Sökresultat slut -->
 	<!--Sparade filmer-->
-	<div class ="row">
-		<div class="col-sm-12" id="myMovies">
+	
+	<!-- Titta senare -->
+		<div id="myMovies">
+
+		
 			<div class="rubrik">Titta senare</div>
-
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-12">
-
-			<div class="savedMovies" id="myMoviesRated">
-			Rubrik <img src="emptyrate.png" class="rate" alt="rate">
+		<div id="myMovies">
+			<div class="savedMovies">
+			<div class="flex-container">
+			<div class="flex-item">
+			Rubrik </div><div class="flex-item"><img src="emptyrate.png" class="rate" alt="rate"></div></div>
 			</div>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="rubrik">
-				Betygsatta filmer
-				</div>
+			<div class="savedMovies">
+			<div class="flex-container">
+			<div class="flex-item">
+			Rubrik </div><div class="flex-item"><img src="emptyrate.png" class="rate" alt="rate"></div></div>
 			</div>
-		</div>
-	</div>
+			<div class="savedMovies">
+			<div class="flex-container">
+			<div class="flex-item">
+			Rubrik </div><div class="flex-item"><img src="emptyrate.png" class="rate" alt="rate"></div></div>
+			</div>
+</div>
+	<!-- Betygsatta filmer -->
+				<div class="rubrik">Betygsatta filmer</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
+
 				<div class="savedMovies">
 				Rubrik
 				<img src="rate.png" class="rate">
 				</div>
-			</div>
-		</div>
-	</div>
+		
 
 <!--Sparade filmer slut-->
 </body>
