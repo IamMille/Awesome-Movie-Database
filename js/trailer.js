@@ -15,10 +15,26 @@ window.addEventListener("load", function()
         url += "&key=AIzaSyCII7TDbu0ckrYSPzmu0USdAFlLwJ4IJSc";
         url += "&q=trailer+" + encodeURIComponent(query);
 
-    fetch( url )
-      .then( resp => resp.json() )
-      .then( data => {
+    var req = new XMLHttpRequest();
+    req.open("get", url);
+    req.onreadystatechange = getMovieTrailer; // onload + onerror
+    req.send();
 
+    function getMovieTrailer()
+    {
+      if (req.readyState != 4) return;
+      if (req.status != 200) {
+        if (!navigator.isOnline)
+          console.error("Fetch error: no internet");
+        else
+          console.error("Fetch error: " + req.status, req);
+
+        $("#trailer").innerText = "Fetch resp: " + req.statusText;
+        return;
+      }
+
+      // 200 OK
+      let data = JSON.parse(req.responseText);
       let firstMatch = data.items[0];
       let trailer = {
         query: query,
@@ -31,18 +47,17 @@ window.addEventListener("load", function()
         thumb_med: firstMatch.snippet.thumbnails.medium.url,  // 320x180
         thumb_hig: firstMatch.snippet.thumbnails.high.url     // 480x360
       };
-      console.log(trailer);
 
-      var html = `
+      let html = `
         <p><a href="${trailer.url}" target="_blank" class="video">
           <img src="${trailer.thumb_med}" alt="${trailer.title}" />
         </a></p>
       `; //data-lity
 
       $("#trailer").innerHTML = html;
-      console.log( $(".video") );
+      //console.log( $(".video") );
 
-      var $j = jQuery.noConflict();
+      let $j = jQuery.noConflict();
       $j(".video").magnificPopup({
         type: 'iframe',
         iframe:{patterns:{youtube:{src:'http://www.youtube.com/embed/%id%?autoplay=1'}}}
@@ -50,11 +65,7 @@ window.addEventListener("load", function()
 
       //$("pre").text( JSON.stringify(data, null, 2) ); // print json
 
-    })
-    .catch( err => {
-      console.error("Fetch error ", err);
-      $("#trailer").innerText = "Fetch " + err.statusText;
-    }); // end of fetch
+    } // end getMovieTrailer
 
   }); // end onClick
 
