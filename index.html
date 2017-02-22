@@ -13,8 +13,9 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<script src="js/search.js"></script>
+	
 	<script src="js/store.js"></script>
+	<script src="js/search.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="rating.css">
@@ -32,17 +33,16 @@
 		<div class="col-sm-6 col-sm-offset-3">
 			<div id="imaginary_container">
 				<div class="input-group stylish-input-group">
-					<input type="text" class="form-control" id="searchBar" placeholder="sök" value="fight club">
-					<span class="input-group-addon">
-						<button type="submit" value="submit">
-							<span class="glyphicon glyphicon-search"></span>
-						</button>
+					<input type="text" class="form-control" id="searchBar" placeholder="sök" value="">
+					
+					<span class="input-group-addon">	
+					<span id="myButt" style="cursor: pointer;" class="glyphicon glyphicon-search"></span>
 					</span>
 				</div>
 				<div id="searchResult">
-					<p>Expemple Expemple Expemple Expemple</p>
-					<p>Expemple Expemple Expemple Expemple</p>
-					<p>Expemple Expemple Expemple Expemple</p>
+					<p><a href="javascript:void(0);" id="sug1" data-id="" class="movie"></a></p>
+					<p><a href="javascript:void(0);" id="sug2" data-id="" class="movie"></a></p>
+					<p><a href="javascript:void(0);" id="sug3" data-id="" class="movie"></a></p>
 				</div>
       </div>
 
@@ -57,6 +57,7 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div id="movie">
+			<p id="movie1"></p>
 				<img src="posterexempel.jpg" id="poster" placeholder="poster" alt="poster">
 				<div class="smRubrik">Rubrik på film</div>
 				<p>Released: 16 Jul 2010<br>
@@ -117,5 +118,6 @@
 	</div>
 
 	<!--Sparade filmer slut-->
+	
 	</body>
 	</html>
