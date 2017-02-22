@@ -50,16 +50,24 @@ class MovieStorage
       {
         let movie = this.myMovies[key];
         html += `
-            <h2>${movie.Title} (${movie.Year})
-              <a href="#" data-id=${movie.imdbID} onClick="rem(this)">Remove</a>
-            </h2>
-            <p>${movie.Actors}</p>
-            <p><img src="${movie.Poster}" width="100px" alt="" /></p>
+          <div class="savedMovies">
+            <div class="flex-container">
+            <div class="flex-item"
+              onClick="rem(this)"
+              data-id=${movie.imdbID}>
+              ${movie.Title} (${movie.Year})</div>
+            <div class="flex-item"><img src="emptyrate.png" class="rate" alt="rate"></div></div>
+          </div>
         `;
       });
 
-    $("#myMovies").innerHTML = html;
+    var x = document.getElementById("myMovies");
 
+    console.log( $("#myMovies").innerHTML );
+    console.log( x );
+    //x.innerHTML = html;
+    //$("#myMovies").innerHTML = "<h1>JAVASCRIPT??</h1>";
+    console.log("display finished");
   }
 
 } // end of class
@@ -95,6 +103,7 @@ class MovieRating
   - lägg till property "userRating" i objektet
 */
 
+var movieStorage = new MovieStorage();
 var movieRating = new MovieRating();
 
 window.addEventListener("load", function()
@@ -120,7 +129,9 @@ window.addEventListener("load", function()
   {
     let movieId = this.getAttribute('data-id'); //get movieID from attribute
     console.log("click titta senare", movieId);
-    //marked as saved to global Object (saved by Janie)
+    movieStorage.put(movieId, movie);
+    movieStorage.display();
+
   });
 
 }); // LOAD end
