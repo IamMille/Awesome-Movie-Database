@@ -18,7 +18,7 @@ window.addEventListener("load", function(){
           let poster = document.getElementById("poster");
 
           // Skapa URL med querystring
-          let url = 'http://www.omdbapi.com/?i=';
+          let url = 'https://www.omdbapi.com/?i=';
           url += movieId;  // ändra denna
           url += '&plot=short&r=json';
 
@@ -37,12 +37,12 @@ window.addEventListener("load", function(){
           		console.log(movie.Title);
           		console.log(ajax.responseText);*/
 
-          		rubrik.innerHTML = `${movie.Title}` ;
+          		rubrik.innerHTML = `${movie.Title}`;
           		year.innerHTML = `${movie.Year} `;
           		plot.innerHTML = `${movie.Plot}`;
           		actors.innerHTML = `${movie.Actors}`;
           		genre.innerHTML = `${movie.Genre}`;
-          		poster.innerHTML = `<img src="${movie.Poster}" />`;
+          		poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
 
           	}
           };

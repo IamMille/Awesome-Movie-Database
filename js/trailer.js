@@ -23,8 +23,8 @@ window.addEventListener("load", function()
       let trailer = {
         query: query,
         id: firstMatch.id.videoId,
-        url: "http://www.youtube.com/watch?v=" + firstMatch.id.videoId || "",
-        url2: "http://www.youtube.com/embed/" + firstMatch.id.videoId + "?autoplay=1",
+        url: "https://www.youtube.com/watch?v=" + firstMatch.id.videoId || "",
+        url2: "https://www.youtube.com/embed/" + firstMatch.id.videoId + "?autoplay=1",
         kind: firstMatch.id.kind,
         title: firstMatch.snippet.title,
         thumb_low: firstMatch.snippet.thumbnails.default.url, // 120x90§
@@ -45,7 +45,7 @@ window.addEventListener("load", function()
       var $j = jQuery.noConflict();
       $j(".video").magnificPopup({
         type: 'iframe',
-        iframe:{patterns:{youtube:{src:'http://www.youtube.com/embed/%id%?autoplay=1'}}}
+        iframe:{patterns:{youtube:{src:'https://www.youtube.com/embed/%id%?autoplay=1'}}}
       });
 
       //$("pre").text( JSON.stringify(data, null, 2) ); // print json
