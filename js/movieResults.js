@@ -4,11 +4,11 @@ window.addEventListener("load", function(){
 
   var movies = Array.from(document.getElementsByClassName("movie"));
 
-  movies.forEach(function(movie) {
-      var movieId = movie.getAttribute("data-id");
+  movies.forEach(function(movie2) {
 
-      movie.addEventListener("click", function() {
 
+      movie2.addEventListener("click", function() {
+      var movieId = movie2.getAttribute("data-id");
           // DOM-element som vi kommer att behöva
           let rubrik = document.getElementById("rubrik");
           let plot = document.getElementById("plot");
