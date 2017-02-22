@@ -1,10 +1,44 @@
-window.onload = function(){
-document.getElementById("searchBar").addEventListener("keydown",search);
+window.onload=function(){
+  var tit=document.getElementById("searchBar");
+  var httpRequest;
+ document.getElementById("myButt").onclick=function minRequest() {
+    httpRequest = new XMLHttpRequest();
 
+    if (!httpRequest) {
+      alert('Jag ger upp');
+      return false;
+    }
+    httpRequest.onreadystatechange = mSvar;
+    httpRequest.open('GET', 'https://www.omdbapi.com/?s='+tit.value+'&r=json');
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send();
 
+  }
 
+  function mSvar() {
+  if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    if (httpRequest.status === 200) {		
+	  //document.getElementById('movie1').innerHTML=httpRequest.responseText;
+	  jObj = JSON.parse(this.responseText);
 
-};
-function search(){
-	alert("du har skrivit ");
+	  document.getElementById('sug1').innerHTML=JSON.stringify(jObj.Search[0].Title)+" - "+(jObj.Search[0].Year);
+	  document.getElementById('sug2').innerHTML=JSON.stringify(jObj.Search[1].Title)+" - "+(jObj.Search[1].Year);
+	  document.getElementById('sug3').innerHTML=JSON.stringify(jObj.Search[2].Title)+" - "+(jObj.Search[2].Year);
+	  let id1=(jObj.Search[0].imdbID);
+	  let attID=document.getElementById('sug1');
+	  attID.setAttribute('data-id', id1);
+	  
+	  let id2=(jObj.Search[1].imdbID);
+	  let attID1=document.getElementById('sug2');
+	  attID1.setAttribute('data-id', id2);
+	  
+	  let id3=(jObj.Search[2].imdbID);
+	  let attID2=document.getElementById('sug3');
+	  attID2.setAttribute('data-id', id3);
+	  console.log(attID,attID1,attID2);
+    } else {
+      alert('Fel igen.');
+    }
+  }
+}
 }
