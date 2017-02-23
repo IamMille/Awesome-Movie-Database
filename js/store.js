@@ -50,6 +50,8 @@ class MovieStorage
   display() {
     let html = "";
 
+    console.log("Display: ", this.myMovies);
+
     if (Object.keys(this.myMovies).length !== 0)
       Object.keys(this.myMovies).forEach( key =>
       {
@@ -57,18 +59,14 @@ class MovieStorage
         html += `
           <div class="savedMovies">
             <div class="flex-container">
-              <div class="flex-item"
+              <div class="flex-item
                 onClick="rem(this)"
                 data-id=${movie.imdbID}>
                 ${movie.Title} (${movie.Year})</div>
                 <div class="flex-item">
-                  <span class="stars-rating">
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
-                  </span>
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
             </div>
           </div>

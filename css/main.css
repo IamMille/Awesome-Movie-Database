@@ -1,4 +1,6 @@
-
+#poster {
+  display: none;
+}
 
 .stylish-input-group .input-group-addon{
     /*background: white !important; */
@@ -175,7 +177,7 @@ p {
 	background-color: white;
 	font-family: Century Gothic;
 	font-weight: bold;
-	font-size: 3em;
+	font-size: 1.8em;
 	color: #fd4b4b;
 	text-align: left;
 	padding: 10px;
