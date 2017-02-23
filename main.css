@@ -197,6 +197,20 @@ p {
 
 
 }
+#searchResult a{
+	color: black;
+	text-decoration:none;
+	
+}
+#searchResult p{
+	margin-bottom:0;
+	padding:2px;
+	border-bottom:thin dotted #ccc;
+}
+#searchResult p:hover{
+	color:white;
+	background-color:#ccc;
+}
          
 .flex-container {
 	display: flex;
