@@ -1,5 +1,6 @@
 window.onload=function(){
   var tit=document.getElementById("searchBar");
+  var ent=document.getElementById("myButt");
   var httpRequest;
  document.getElementById("myButt").onclick=function minRequest() {
     httpRequest = new XMLHttpRequest();
@@ -14,6 +15,10 @@ window.onload=function(){
     httpRequest.send();
 
   }
+  tit.addEventListener("keypress", function(event){
+	  if (event.keyCode==13)
+		  myButt.click();
+  });
 
   function mSvar() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
