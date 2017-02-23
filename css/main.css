@@ -34,7 +34,7 @@
 
 .header {
 	/*background-color: #868686;*/
-	background-image: url("./LOGO.png");
+	background-image: url("LOGO.png");
 	background-repeat: no-repeat;
 	background-position: center top;
 /*background-size: contain;	*/
@@ -124,7 +124,7 @@ button:hover {
 
 
 body {
-    background-image:url("./background1.png");
+    background-image:url("background1.png");
 	background-repeat: no-repeat;
 	background-position: center 50px;;
 
@@ -260,7 +260,7 @@ p {
 
 	.header {
 	/*background: linear-gradient(black, white;*/
-	background-image: url("./LOGOmini.png");
+	background-image: url("LOGOmini.png");
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: contain;
