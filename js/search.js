@@ -2,6 +2,7 @@ window.onload=function(){
   var tit=document.getElementById("searchBar");
   var ent=document.getElementById("myButt");
   var httpRequest;
+  
  document.getElementById("myButt").onclick=function minRequest() {
     httpRequest = new XMLHttpRequest();
 
@@ -19,6 +20,7 @@ window.onload=function(){
 	  if (event.keyCode==13)
 		  myButt.click();
   });
+  tit.onkeyup=function(){myButt.click();}
 
   function mSvar() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
@@ -41,7 +43,7 @@ window.onload=function(){
 	  let id3=(jObj.Search[2].imdbID);
 	  let attID2=document.getElementById('sug3');
 	  attID2.setAttribute('data-id', id3);
-	  console.log(attID,attID1,attID2);
+	 // console.log(attID,attID1,attID2);
     } else {
       alert('Fel igen.');
     }
