@@ -9,6 +9,8 @@ window.addEventListener("load", function()
 
   $("#viewTrailer").addEventListener("click", function()
   {
+	  $("#trailerPopup").style.display = "block";
+	  
     console.log("viewTrailer");
     var query = "titanic 1994"; // HARDCODED
     var url  = "https://www.googleapis.com/youtube/v3/search?part=snippet";
@@ -23,8 +25,8 @@ window.addEventListener("load", function()
       let trailer = {
         query: query,
         id: firstMatch.id.videoId,
-        url: "https://www.youtube.com/watch?v=" + firstMatch.id.videoId || "",
-        url2: "https://www.youtube.com/embed/" + firstMatch.id.videoId + "?autoplay=1",
+        urlbasic: "https://www.youtube.com/watch?v=" + firstMatch.id.videoId || "",
+        url: "https://www.youtube.com/embed/" + firstMatch.id.videoId + "?autoplay=1",
         kind: firstMatch.id.kind,
         title: firstMatch.snippet.title,
         thumb_low: firstMatch.snippet.thumbnails.default.url, // 120x90§
@@ -33,23 +35,14 @@ window.addEventListener("load", function()
       };
       console.log(trailer);
 
-      var html = `
-        <p><a href="${trailer.url}" target="_blank" class="video">
-          <img src="${trailer.thumb_med}" alt="${trailer.title}" />
-        </a></p>
-      `; //data-lity
+     var html = `
+       <iframe width="80%" height="80%" class="play" src="${trailer.url}" frameborder="0"></iframe>
+      `;
 
-      $("#trailer").innerHTML = html;
-      console.log( $(".video") );
-
-      var $j = jQuery.noConflict();
-      $j(".video").magnificPopup({
-        type: 'iframe',
-        iframe:{patterns:{youtube:{src:'https://www.youtube.com/embed/%id%?autoplay=1'}}}
-      });
-
-      //$("pre").text( JSON.stringify(data, null, 2) ); // print json
-
+      $("#trailerPopup").innerHTML = html;
+   
+   
+   
     })
     .catch( err => {
       console.error("Fetch error ", err);
@@ -58,4 +51,13 @@ window.addEventListener("load", function()
 
   }); // end onClick
 
+  
+  // Hide trailerpopup on click 
+  
+  $("#trailerPopup").addEventListener("click", function(){
+	   
+	   $("#trailerPopup").style.display = "none";
+	   
+   });
+  
 }); // en onLoad
