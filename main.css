@@ -2,7 +2,7 @@
 
 .stylish-input-group .input-group-addon{
     /*background: white !important; */
-
+	
 
 }
 .stylish-input-group .form-control{
@@ -21,15 +21,15 @@
 }
 
 #searchBar {
-
+	 
 }
 
 #imaginary_container {
 	margin: auto;
 	max-width: 700px;
 	text-align: center;
-
-}
+	
+}      
 
 
 .header {
@@ -39,8 +39,8 @@
 	background-position: center top;
 /*background-size: contain;	*/
 height: 200px;
-	/*position: relative;*/
-	margin-bottom: 6%;
+	/*position: relative;*/ 
+	margin-bottom: 6%; 
 }
 
 
@@ -60,12 +60,12 @@ height: 200px;
 }
 
 #info {
-	max-width: 450px;
+	max-width: 450px; 
 }
 
 #poster {
 
-	margin: auto;
+	margin: auto; 
 	width: 150px;
 }
 
@@ -76,7 +76,7 @@ height: 200px;
 }
 
 button {
-
+	
 	float: right;
 	/*margin-right: 30px;*/
 	display: inline-block;
@@ -103,13 +103,13 @@ button:hover {
 #viewTrailer {
 	background-color: #0084cc;
 	float: left;
-
+	
 }
 
 #saveButton {
 	background-color: #27ac27;
 	float: right;
-
+	
 }
 
 .logo{
@@ -126,11 +126,11 @@ button:hover {
 body {
     background-image:url("background1.png");
 	background-repeat: no-repeat;
-	background-position: center 50px;;
-
+	background-position: center 50px;; 
+	
 	/*background-position: 0% 50%;*/
 	/*background-size: contain; */
-
+	
 	/*
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -163,7 +163,7 @@ body {
 
 p {
 	/*margin-left: 10px; */
-
+	
 }
 
 .savedMovies {
@@ -193,35 +193,17 @@ p {
 	border-color:#ccc;
 	border-style: solid;
 	font-family: verdana;
-	position:absolute;
-	z-index:100;
-	background-color:white;
-	width:50%;
 
 
 
 }
-#searchResult a{
-	color: black;
-	text-decoration:none;
-
-}
-#searchResult p{
-	margin-bottom:0;
-	padding:2px;
-	border-bottom:thin dotted #ccc;
-}
-#searchResult p:hover{
-	color:white;
-	background-color:#ccc;
-}
-
+         
 .flex-container {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-
-
+	flex-direction: row; 
+	flex-wrap: wrap; 
+	
+	
 }
 
 .flex-item {
@@ -236,46 +218,45 @@ p {
 
 @media (max-width: 700px) {
 	#movie {
-		max-width: none;
-
+		max-width: none; 
+		 
 	}
-
+	
 	.savedMovies {
-
+		
 		max-width: none;
 		height: auto;
-		text-align: center;
+		text-align: center; 
 	}
-
-
+	
+	
 	.rate {
-		float: none;
-
+		float: none; 
+		
 	}
-
+	
 	.rubrik {
 		font-size: 30px;
-
+		
 	}
-
+	
 
 }
 
 @media (max-width: 565px) {
-
+	
 	.header {
 	/*background: linear-gradient(black, white;*/
 	background-image: url("LOGOmini.png");
 	background-repeat: no-repeat;
 	background-position: center top;
-	background-size: contain;
+	background-size: contain;	
 	height: 150px;
-	margin-bottom: 3%;
+	margin-bottom: 3%; 
 	}
-
-<<<<<<< HEAD:css/main.css
+	
 }
-=======
+
 #trailerPopup {
 	display: none;
 	background-color: rgba(0,0,0,.85);
@@ -296,4 +277,3 @@ p {
 	transform: translateY(-50%);
 }
 
->>>>>>> janie:main.css
