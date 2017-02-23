@@ -9,8 +9,7 @@ window.addEventListener("load", function()
 
   $("#viewTrailer").addEventListener("click", function()
   {
-    console.log("viewTrailer");
-    var query = "titanic 1994"; // HARDCODED
+    var query = $("#rubrik").innerText + " " + $("#year").innerText;
     var url  = "https://www.googleapis.com/youtube/v3/search?part=snippet";
         url += "&key=AIzaSyCII7TDbu0ckrYSPzmu0USdAFlLwJ4IJSc";
         url += "&q=trailer+" + encodeURIComponent(query);
