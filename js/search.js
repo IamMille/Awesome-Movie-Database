@@ -18,7 +18,8 @@ window.onload=function(){
   function mSvar() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
     if (httpRequest.status === 200) {		
-	  //document.getElementById('movie1').innerHTML=httpRequest.responseText;
+	  let show=document.getElementById('searchResult');
+	  show.style.display='block';
 	  jObj = JSON.parse(this.responseText);
 
 	  document.getElementById('sug1').innerHTML=JSON.stringify(jObj.Search[0].Title)+" - "+(jObj.Search[0].Year);
