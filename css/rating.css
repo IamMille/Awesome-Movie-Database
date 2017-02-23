@@ -1,12 +1,14 @@
-/* set all stars to 'empty star' */
-.stars-container {
+/* main rating */
+.stars-rating {
     display: inline-block;
     vertical-align: top;
     font-size: 1.5em;
 }
-/* set all stars to 'empty star' */
+.stars-global {
+  font-size: 0.5em;
+}
+/* set all stars to empty */
 .stars-container .star {
-    float: right;
     display: inline-block;
     padding: 2px;
     color: gold;
@@ -16,11 +18,11 @@
     content:"\2606";
 }
 /* set hovered/selected star to 'filled star' */
-.star:hover:before, .star.selected:before {
+.star:hover:before, .star.selected:before { /* csslint allow: adjoining-classes */
     content:"\2605";
 }
-/* set all stars after hovered/selected to 'filled star'
+/* set all stars after hovered/selected to filled
 ** it will appear that it selects all after due to positioning */
-.star:hover ~ .star:before, .star.selected ~ .star:before {
+.star:hover ~ .star:before, .star.selected ~ .star:before { /* csslint allow: adjoining-classes */
     content:"\2605";
 }

@@ -1,8 +1,14 @@
 
+let $ = function(str) { // local func to not polute global namespace
+  var els = document.querySelectorAll(str);
+  if (els.length === 1) return els[0];
+  else return Array.from(els);
+};
+
 class MovieStorage
 {
   constructor() {
-    var data = sessionStorage.getItem("myMovies");
+    var data = localStorage.getItem("myMovies");
 
     if (data && data.length > 0)
       this.myMovies = JSON.parse(data); //restore saved
@@ -37,8 +43,7 @@ class MovieStorage
     var datastring = JSON.stringify(this.myMovies);
     console.log("Save (obj): ", this.myMovies);
     //console.log("Save (str): ", datastring);
-    $("pre").innerText = datastring;
-    sessionStorage.setItem("myMovies", datastring);
+    localStorage.setItem("myMovies", datastring);
     this.display();
   }
 
@@ -52,21 +57,25 @@ class MovieStorage
         html += `
           <div class="savedMovies">
             <div class="flex-container">
-            <div class="flex-item"
-              onClick="rem(this)"
-              data-id=${movie.imdbID}>
-              ${movie.Title} (${movie.Year})</div>
-            <div class="flex-item"><img src="emptyrate.png" class="rate" alt="rate"></div></div>
+              <div class="flex-item"
+                onClick="rem(this)"
+                data-id=${movie.imdbID}>
+                ${movie.Title} (${movie.Year})</div>
+                <div class="flex-item">
+                  <span class="stars-rating">
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                  </span>
+                </div>
+            </div>
           </div>
         `;
       });
 
-    var x = document.getElementById("myMovies");
-
-    console.log( $("#myMovies").innerHTML );
-    console.log( x );
-    //x.innerHTML = html;
-    //$("#myMovies").innerHTML = "<h1>JAVASCRIPT??</h1>";
+    $("#myMovies").innerHTML = html;
     console.log("display finished");
   }
 
@@ -79,7 +88,7 @@ class MovieRating
     el.setAttribute("data-toggle", "tooltip");
     el.setAttribute("title", "Click to remove rating");
 
-    // save to sessionStorage
+    // save to localstorage
     console.log("Rated: " + el.id);
   }
 
@@ -89,7 +98,7 @@ class MovieRating
     el.removeAttribute("data-toggle");
     el.removeAttribute("title");
 
-    // save to sessionStorage
+    // save to localstorage
     console.log("Rating removed: " + el.id);
   }
 }
@@ -103,17 +112,13 @@ class MovieRating
   - lägg till property "userRating" i objektet
 */
 
-var movieStorage = new MovieStorage();
-var movieRating = new MovieRating();
+var movieStorage;
+var movieRating;
 
 window.addEventListener("load", function()
 {
-
-  let $ = function(str) { // local func to not polute global namespace
-    var els = document.querySelectorAll(str);
-    if (els.length === 1) return els[0];
-    else return Array.from(els);
-  };
+  movieStorage = new MovieStorage();
+  movieRating = new MovieRating();
 
   // addEventListener on click Rating star
   $(".star").forEach(el => el.addEventListener("click", function()
@@ -131,7 +136,6 @@ window.addEventListener("load", function()
     console.log("click titta senare", movieId);
     movieStorage.put(movieId, movie);
     movieStorage.display();
-
   });
 
 }); // LOAD end
