@@ -48,6 +48,7 @@ window.addEventListener("load", function(){
           		genre.innerHTML = `${movie.Genre}`;
           		poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
               $("saveButton").setAttribute("data-id", movie.imdbID);
+              $("viewTrailer").setAttribute("data-id", movie.imdbID);
               //<button id="saveButton" data-id="">TITTA SENARE</button>
           	}
           };
