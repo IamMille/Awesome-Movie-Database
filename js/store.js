@@ -1,8 +1,14 @@
 
+let $ = function(str) { // local func to not polute global namespace
+  var els = document.querySelectorAll(str);
+  if (els.length === 1) return els[0];
+  else return Array.from(els);
+};
+
 class MovieStorage
 {
   constructor() {
-    var data = sessionStorage.getItem("myMovies");
+    var data = localStorage.getItem("myMovies");
 
     if (data && data.length > 0)
       this.myMovies = JSON.parse(data); //restore saved
@@ -37,29 +43,38 @@ class MovieStorage
     var datastring = JSON.stringify(this.myMovies);
     console.log("Save (obj): ", this.myMovies);
     //console.log("Save (str): ", datastring);
-    $("pre").innerText = datastring;
-    sessionStorage.setItem("myMovies", datastring);
+    localStorage.setItem("myMovies", datastring);
     this.display();
   }
 
   display() {
     let html = "";
 
+    console.log("Display: ", this.myMovies);
+
     if (Object.keys(this.myMovies).length !== 0)
       Object.keys(this.myMovies).forEach( key =>
       {
         let movie = this.myMovies[key];
         html += `
-            <h2>${movie.Title} (${movie.Year})
-              <a href="#" data-id=${movie.imdbID} onClick="rem(this)">Remove</a>
-            </h2>
-            <p>${movie.Actors}</p>
-            <p><img src="${movie.Poster}" width="100px" alt="" /></p>
+          <div class="savedMovies">
+            <div class="flex-container">
+              <div class="flex-item
+                onClick="rem(this)"
+                data-id=${movie.imdbID}>
+                ${movie.Title} (${movie.Year})</div>
+                <div class="flex-item">
+                  <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </div>
+          </div>
         `;
       });
 
     $("#myMovies").innerHTML = html;
-
+    console.log("display finished");
   }
 
 } // end of class
@@ -71,7 +86,7 @@ class MovieRating
     el.setAttribute("data-toggle", "tooltip");
     el.setAttribute("title", "Click to remove rating");
 
-    // save to sessionStorage
+    // save to localstorage
     console.log("Rated: " + el.id);
   }
 
@@ -81,7 +96,7 @@ class MovieRating
     el.removeAttribute("data-toggle");
     el.removeAttribute("title");
 
-    // save to sessionStorage
+    // save to localstorage
     console.log("Rating removed: " + el.id);
   }
 }
@@ -95,16 +110,13 @@ class MovieRating
   - lägg till property "userRating" i objektet
 */
 
-var movieRating = new MovieRating();
+var movieStorage;
+var movieRating;
 
 window.addEventListener("load", function()
 {
-
-  let $ = function(str) { // local func to not polute global namespace
-    var els = document.querySelectorAll(str);
-    if (els.length === 1) return els[0];
-    else return Array.from(els);
-  };
+  movieStorage = new MovieStorage();
+  movieRating = new MovieRating();
 
   // addEventListener on click Rating star
   $(".star").forEach(el => el.addEventListener("click", function()
@@ -120,7 +132,8 @@ window.addEventListener("load", function()
   {
     let movieId = this.getAttribute('data-id'); //get movieID from attribute
     console.log("click titta senare", movieId);
-    //marked as saved to global Object (saved by Janie)
+    movieStorage.put(movieId, movie);
+    movieStorage.display();
   });
 
 }); // LOAD end

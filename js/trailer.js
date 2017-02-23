@@ -9,10 +9,7 @@ window.addEventListener("load", function()
 
   $("#viewTrailer").addEventListener("click", function()
   {
-	  $("#trailerPopup").style.display = "block";
-	  
-    console.log("viewTrailer");
-    var query = "titanic 1994"; // HARDCODED
+    var query = $("#rubrik").innerText + " " + $("#year").innerText;
     var url  = "https://www.googleapis.com/youtube/v3/search?part=snippet";
         url += "&key=AIzaSyCII7TDbu0ckrYSPzmu0USdAFlLwJ4IJSc";
         url += "&q=trailer+" + encodeURIComponent(query);
@@ -50,31 +47,20 @@ window.addEventListener("load", function()
         thumb_hig: firstMatch.snippet.thumbnails.high.url     // 480x360
       };
 
-
-     var html = `
-       <iframe width="80%" height="80%" class="play" src="${trailer.url}" frameborder="0"></iframe>
+      var html = `
+        <iframe width="80%" height="80%" class="play" src="${trailer.url}" frameborder="0"></iframe>
       `;
 
+      $("#trailerPopup").style.display = "block";
       $("#trailerPopup").innerHTML = html;
-   
-   
-   
-    })
-    .catch( err => {
-      console.error("Fetch error ", err);
-      $("#trailer").innerText = "Fetch " + err.statusText;
-    }); // end of fetch
 
+    } // END getMovieTrailer()
 
   }); // end onClick
 
-  
-  // Hide trailerpopup on click 
-  
+  // Hide trailerpopup on click
   $("#trailerPopup").addEventListener("click", function(){
-	   
 	   $("#trailerPopup").style.display = "none";
-	   
    });
-  
+
 }); // en onLoad

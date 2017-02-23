@@ -16,7 +16,7 @@ window.addEventListener("load", function(){
           let genre = document.getElementById("genre");
           let actors = document.getElementById("actors");
           let poster = document.getElementById("poster");
-		  
+
 		  //göm sökresultat
 		  let hide=document.getElementById('searchResult');
 		  hide.style.display='none';
@@ -47,7 +47,9 @@ window.addEventListener("load", function(){
           		actors.innerHTML = `${movie.Actors}`;
           		genre.innerHTML = `${movie.Genre}`;
           		poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
-
+              $("saveButton").setAttribute("data-id", movie.imdbID);
+              $("viewTrailer").setAttribute("data-id", movie.imdbID);
+              //<button id="saveButton" data-id="">TITTA SENARE</button>
           	}
           };
           ajax.send();

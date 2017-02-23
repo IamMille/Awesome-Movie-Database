@@ -1,26 +1,31 @@
-/* set all stars to 'empty star' */
+/* set all stars to empty */
 .stars-container {
-    display: inline-block;
-    vertical-align: top;
-    font-size: 1.5em;
+  display: inline-block;
+  font-size: 1.5em;
 }
-/* set all stars to 'empty star' */
+.stars-container-view {
+  font-size: 0.9em;
+  vertical-align: middle;
+}
+
+/* set all stars to empty */
 .stars-container .star {
-    float: right;
-    display: inline-block;
-    padding: 2px;
-    color: gold;
-    cursor: pointer;
+  float: right;
+  display: inline-block;
+  padding: 2px;
+  color: gold;
+  cursor: pointer;
 }
 .stars-container .star:before {
-    content:"\2606";
+  content:"\2606";
 }
-/* set hovered/selected star to 'filled star' */
+
+/* set hovered/selected star to filled */
 .star:hover:before, .star.selected:before {
-    content:"\2605";
+  content:"\2605";
 }
-/* set all stars after hovered/selected to 'filled star'
-** it will appear that it selects all after due to positioning */
+
+/* set all stars after hovered/selected filled */
 .star:hover ~ .star:before, .star.selected ~ .star:before {
-    content:"\2605";
+  content:"\2605";
 }
