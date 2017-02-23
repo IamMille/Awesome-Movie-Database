@@ -16,6 +16,10 @@ window.addEventListener("load", function(){
           let genre = document.getElementById("genre");
           let actors = document.getElementById("actors");
           let poster = document.getElementById("poster");
+		  
+		  //göm sökresultat
+		  let hide=document.getElementById('searchResult');
+		  hide.style.display='none';
 
           // Skapa URL med querystring
           let url = 'https://www.omdbapi.com/?i=';
