@@ -60,6 +60,7 @@
 	<br>
 
 			<div id="movie">
+
 				<div class="flex-container">
 					<div id="info" class="flex-item">
 						<p id="rubrik" class="smRubrik">Inception (2010)</p>
@@ -98,33 +99,54 @@
 	<!-- Titta senare -->
 		<div class="rubrik">Titta senare</div>
 		<div id="myMovies">
+
 			<div class="savedMovies">
 				<div class="flex-container">
-				<div class="flex-item">Rubrik</div>
-				<div class="flex-item">
-					<img src="emptyrate.png" class="rate" alt="rate"></div>
+					<div class="flex-item">Rubrik</div>
+					<div class="flex-item">
+						<button type="button" class="close" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="savedMovies">
+				<div class="flex-container">
+					<div class="flex-item">Rubrik</div>
+					<div class="flex-item">
+						<button type="button" class="close" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+						</button>
+					</div>
 				</div>
 			</div>
 			<div class="savedMovies">
 				<div class="flex-container">
 				<div class="flex-item">Rubrik</div>
-				<div class="flex-item">
-					<img src="emptyrate.png" class="rate" alt="rate"></div>
-				</div>
-			</div>
-			<div class="savedMovies">
-				<div class="flex-container">
-				<div class="flex-item">Rubrik</div>
-				<div class="flex-item">
-					<img src="emptyrate.png" class="rate" alt="rate"></div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Betygsatta filmer -->
 		<div class="rubrik">Betygsatta filmer</div>
-		<div class="savedMovies">
-			Rubrik <img src="rate.png" class="rate">
+		<div id="myMoviesRated">
+			<div class="savedMovies">
+				<div class="flex-container">
+				<div class="flex-item">Rubrik</div>
+				<div class="flex-item">
+					<div class="rating">
+							<span class="stars-container stars-container-view">
+								<span class="star"></span>
+								<span class="star"></span>
+								<span class="star"></span>
+								<span class="star"></span>
+								<span class="star"></span>
+							</span>
+					</div>
+				</div>
+				</div>
+			</div>
 		</div>
 
 <!--Sparade filmer slut-->
