@@ -193,6 +193,10 @@ p {
 	border-color:#ccc;
 	border-style: solid;
 	font-family: verdana;
+	position:absolute;
+	z-index:100;
+	background-color:white;
+	width:50%;
 
 
 
