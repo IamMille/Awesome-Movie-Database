@@ -1,22 +1,15 @@
 
-.stylish-input-group .input-group-addon{
-    /*background: white !important; */
-
-
-}
-.stylish-input-group .form-control{
-	border-right:0;
-	box-shadow:0 0 0;
-	border-color:#ccc;
+.stylish-input-group .form-control {
+	border-right: 0;
+	box-shadow: 0 0 0;
+	border-color: #ccc;
 	border-radius: 20px;
-
 }
-.stylish-input-group button{
 
+.stylish-input-group button {
 	border-radius: 20px;
-    border:0;
-    background:transparent;
-
+  border: 0;
+  background: transparent;
 }
 
 #imaginary_container {
@@ -31,14 +24,13 @@
 	background-image: url("LOGO.png");
 	background-repeat: no-repeat;
 	background-position: center top;
-/*background-size: contain;	*/
-height: 200px;
+	/*background-size: contain;	*/
+	height: 200px;
 	/*position: relative;*/
 	margin-bottom: 6%;
 }
 
-
-#movie{
+#movie {
 	max-width: 700px;
 	margin: auto;
 	height: auto;
@@ -58,20 +50,17 @@ height: 200px;
 }
 
 #poster {
-
 	margin: auto;
 	width: 150px;
 }
 
 .empty {
-
 	width: 150px;
 	margin-bottom: 10px;
 }
 
 button {
-
-	float: right;
+	float: right; /*csslint display-property-grouping:false */
 	/*margin-right: 30px;*/
 	display: inline-block;
 	border: none;
@@ -83,44 +72,37 @@ button {
 	padding-bottom: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-
-	   -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+  transition-duration: 0.4s;
 }
 
 button:hover {
     background-color: #5cd65c;
     color: black;
-	/*text-shadow: 2px 2px 5px #2eb82e; */
+		/*text-shadow: 2px 2px 5px #2eb82e; */
 }
 
 #viewTrailer {
 	background-color: #0084cc;
 	float: left;
-
 }
 
 #saveButton {
 	background-color: #27ac27;
 	float: right;
-
 }
 
 .logo{
-
-  /*margin-top: 25px;*/
-  padding:auto;
+  /* margin-top: 25px;*
+	   padding:auto; <- ej korrekt css */
   text-align: center;
-
   max-width: 100%;
   height: auto;
 }
 
-
 body {
-    background-image:url("background1.png");
+  background-image: url("background1.png");
 	background-repeat: no-repeat;
-	background-position: center 50px;;
+	background-position: center 50px;
 
 	/*background-position: 0% 50%;*/
 	/*background-size: contain; */
@@ -142,7 +124,7 @@ body {
 	font-weight: bold;
 	font-size: 48px;
 	color: #4b4b4b;
-	color: rgba(75, 75, 75, 0.4)
+	color: rgba(75, 75, 75, 0.4);
 }
 
 .smRubrik {
@@ -155,27 +137,20 @@ body {
 	/*margin-left: 10px;*/
 }
 
-p {
-	/*margin-left: 10px; */
-
-}
-
 .savedMovies {
 	max-width: 700px;
 	margin: auto;
-	height: 90px;
 	border-radius: 20px;
 	border: 1px solid gray;
 	background-color: white;
-	font-family: Century Gothic;
+	font-family: "Century Gothic";
 	font-weight: bold;
 	font-size: 1.8em;
 	color: #fd4b4b;
 	text-align: left;
 	padding: 10px;
+	/*height: 90px;*/
 	padding-left: 30px;
-
-
 }
 
 .rate {
