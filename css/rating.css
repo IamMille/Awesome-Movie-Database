@@ -21,11 +21,17 @@
 }
 
 /* set hovered/selected star to filled */
-.star:hover:before, .star.selected:before {
+.star.selected:before {
+  content:"\2605";
+}
+.rate:hover:before {
   content:"\2605";
 }
 
 /* set all stars after hovered/selected filled */
-.star:hover ~ .star:before, .star.selected ~ .star:before {
+.star.selected ~ .star:before {
+  content:"\2605";
+}
+.rate:hover ~ .rate:before {
   content:"\2605";
 }

@@ -78,6 +78,17 @@ class MovieStorage
   }
 
 } // end of class
+
+
+/* Funktionalitet för knappen [Titta senare]
+  - spara filmen till localstorage
+  - lägg till property "userSaved" i objektet (ingen rating får finnas)
+
+  Funktionalitet för Rating
+  - spara filmen till localstorage
+  - lägg till property "userRating" i objektet
+*/
+
 class MovieRating
 {
   set(el) {
@@ -101,15 +112,6 @@ class MovieRating
   }
 }
 
-/* Funktionalitet för knappen [Titta senare]
-  - spara filmen till localstorage
-  - lägg till property "userSaved" i objektet (ingen rating får finnas)
-
-  Funktionalitet för Rating
-  - spara filmen till localstorage
-  - lägg till property "userRating" i objektet
-*/
-
 var movieStorage;
 var movieRating;
 
@@ -119,7 +121,7 @@ window.addEventListener("load", function()
   movieRating = new MovieRating();
 
   // addEventListener on click Rating star
-  $(".star").forEach(el => el.addEventListener("click", function()
+  $(".rate").forEach(el => el.addEventListener("click", function()
   {
     if (!this.classList.contains("selected")) // remove rating
       movieRating.set(this);
