@@ -1,6 +1,3 @@
-#poster {
-  display: none;
-}
 
 .stylish-input-group .input-group-addon{
     /*background: white !important; */
@@ -22,17 +19,11 @@
 
 }
 
-#searchBar {
-
-}
-
 #imaginary_container {
 	margin: auto;
 	max-width: 700px;
 	text-align: center;
-
 }
-
 
 .header {
 	/*background-color: #868686;*/
@@ -199,14 +190,10 @@ p {
 	z-index:100;
 	background-color:white;
 	width:50%;
-
-
-
 }
 #searchResult a{
 	color: black;
 	text-decoration:none;
-
 }
 #searchResult p{
 	margin-bottom:0;
@@ -222,74 +209,57 @@ p {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-
-
 }
-
 .flex-item {
 	flex: 1 1 auto;
 	/*border: 1px solid black;*/
 }
-
 .flex-center {
 	align-items: center;
 	justify-content: center;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px)
+{
 	#movie {
 		max-width: none;
-
 	}
-
-	.savedMovies {
-
+  .savedMovies {
 		max-width: none;
 		height: auto;
 		text-align: center;
 	}
-
-
 	.rate {
 		float: none;
-
 	}
-
 	.rubrik {
 		font-size: 30px;
-
 	}
+} /* END @media (max-width: 700px) */
 
-
-}
-
-@media (max-width: 565px) {
-
+@media (max-width: 565px)
+{
 	.header {
-	/*background: linear-gradient(black, white;*/
-	background-image: url("LOGOmini.png");
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: contain;
-	height: 150px;
-	margin-bottom: 3%;
+  	/*background: linear-gradient(black, white;*/
+  	background-image: url("LOGOmini.png");
+  	background-repeat: no-repeat;
+  	background-position: center top;
+  	background-size: contain;
+  	height: 150px;
+  	margin-bottom: 3%;
 	}
-
-<<<<<<< HEAD:css/main.css
 }
-=======
+
 #trailerPopup {
 	display: none;
+  background-color: rgb(0,0,0); /* fallback */
 	background-color: rgba(0,0,0,.85);
 	width: 100%;
 	height: 100%;
-	position: fixed; 
-	top: 0%;
-	left: 0%;
+	position: fixed;
+	top: 0;
+	left: 0;
 	z-index: 1001;
-
-	
-	
 }
 
 .play {
@@ -297,5 +267,3 @@ p {
 	top: 50%;
 	transform: translateY(-50%);
 }
-
->>>>>>> janie:main.css
