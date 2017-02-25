@@ -20,7 +20,13 @@ window.onload=function(){
 	  if (event.keyCode==13)
 		  myButt.click();
   });
-  tit.onkeyup=function(){myButt.click();}
+  tit.onkeyup=function(){
+	  if (tit.value===""){
+		let hide=document.getElementById('searchResult');
+		hide.style.display='none';
+		}else{
+		myButt.click();}
+	  }
 
   function mSvar() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
