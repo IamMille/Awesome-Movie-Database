@@ -62,12 +62,11 @@ class MovieStorage
               <div class="flex-item
                 onClick="rem(this)"
                 data-id=${movie.imdbID}>
-                ${movie.Title} (${movie.Year})</div>
-                <div class="flex-item">
-                  <button type="button" class="close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
+                ${movie.Title} (${movie.Year})
+                <button type="button" class="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             </div>
           </div>
         `;
