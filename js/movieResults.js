@@ -20,6 +20,9 @@ window.addEventListener("load", function(){
 		  //göm sökresultat
 		  let hide=document.getElementById('searchResult');
 		  hide.style.display='none';
+		  
+		  let searchB=document.getElementById("searchBar");
+		  searchB.value="";
 
           // Skapa URL med querystring
           let url = 'https://www.omdbapi.com/?i=';
