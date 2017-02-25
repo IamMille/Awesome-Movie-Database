@@ -51,3 +51,6 @@
 .rate:hover ~ .rate:before {
   content:"\2605";
 }
+.movie {
+  cursor: pointer;
+}

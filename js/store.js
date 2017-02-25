@@ -1,5 +1,6 @@
 
-let $ = function(str) { // local func to not polute global namespace
+
+let $ = function(str) {
   var els = document.querySelectorAll(str);
   if (els.length === 1) return els[0];
   else return Array.from(els);
@@ -15,7 +16,7 @@ class MovieStorage
     else
       this.myMovies = {};
 
-    console.log("MyMovies: ", this.myMovies);
+    console.log("MovieStorage constructor(): ", this.myMovies);
     this.display();
   }
 
@@ -50,17 +51,16 @@ class MovieStorage
   display() {
     let html = "";
 
-    console.log("Display: ", this.myMovies);
-
     if (Object.keys(this.myMovies).length !== 0)
       Object.keys(this.myMovies).forEach( key =>
       {
         let movie = this.myMovies[key];
+        console.log(movie);
+
         html += `
           <div class="savedMovies">
             <div class="flex-container">
-              <div class="flex-item
-                onClick="rem(this)"
+              <div class="flex-item movie"
                 data-id=${movie.imdbID}>
                 ${movie.Title} (${movie.Year})
                 <button type="button" class="close" aria-label="Close">
@@ -73,7 +73,7 @@ class MovieStorage
       });
 
     $("#myMovies").innerHTML = html;
-    console.log("display finished");
+    console.log("MovieStorage Display finished");
   }
 
 } // end of class
