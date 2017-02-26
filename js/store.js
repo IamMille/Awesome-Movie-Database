@@ -2,7 +2,7 @@
 
 let $ = function(str) {
   var els = document.querySelectorAll(str);
-  if (els.length === 1) return els[0];
+  if (els.length === 1 && str.indexOf("#") > -1) return els[0];
   else return Array.from(els);
 };
 
@@ -42,7 +42,7 @@ class MovieStorage
 
   save() {
     var datastring = JSON.stringify(this.myMovies);
-    console.log("Save (obj): ", this.myMovies);
+    console.log("MovieStorage Save: ", this.myMovies);
     //console.log("Save (str): ", datastring);
     localStorage.setItem("myMovies", datastring);
     this.display();
@@ -55,7 +55,7 @@ class MovieStorage
       Object.keys(this.myMovies).forEach( key =>
       {
         let movie = this.myMovies[key];
-        console.log(movie);
+        console.log("MovieStorage Display: ", movie);
 
         html += `
           <div class="savedMovies">
@@ -119,6 +119,15 @@ window.addEventListener("load", function()
   movieStorage = new MovieStorage();
   movieRating = new MovieRating();
 
+  // addEventListener on click saveButton
+  $("#saveButton").addEventListener("click", function()
+  {
+    let movieId = this.getAttribute("data-id"); //get movieID from attribute
+    console.log("click titta senare", movieId);
+    movieStorage.put(movieId, movie);
+    movieStorage.display();
+  });
+
   // addEventListener on click Rating star
   $(".rate").forEach(el => el.addEventListener("click", function()
   {
@@ -128,13 +137,12 @@ window.addEventListener("load", function()
       movieRating.rem(this);
   }));
 
-  // addEventListener on click saveButton
-  $("#saveButton").addEventListener("click", function()
-  {
-    let movieId = this.getAttribute('data-id'); //get movieID from attribute
-    console.log("click titta senare", movieId);
-    movieStorage.put(movieId, movie);
-    movieStorage.display();
-  });
+  // addEventListener on click Remove movie
+  $("div[class='flex-item movie'] button").forEach( el => el.addEventListener("click", function(event) {
+      let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
+      console.log("Remove movie: ", movieId);
+      movieStorage.rem(movieId);
+      event.stopPropagation(); // prevent trigger of parent click event
+  }));
 
 }); // LOAD end

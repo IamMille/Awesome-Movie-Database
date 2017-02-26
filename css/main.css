@@ -19,7 +19,7 @@
   margin-bottom: 30px;
 }
 
-.header {
+#header {
 	/*background-color: #868686;*/
 	background-image: url("LOGO.png");
 	background-repeat: no-repeat;
@@ -152,6 +152,10 @@ body {
 	/*height: 90px;*/
 	padding-left: 30px;
 }
+.savedMovies a {
+	text-decoration: none;
+	color: #fd4b4b;
+}
 
 .rate {
 	float: right;
@@ -216,7 +220,7 @@ body {
 
 @media (max-width: 565px)
 {
-	.header {
+	#header {
   	/*background: linear-gradient(black, white;*/
   	background-image: url("LOGOmini.png");
   	background-repeat: no-repeat;
