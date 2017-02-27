@@ -20,13 +20,14 @@ class MovieStorage
     this.display();
   }
 
-  put(id, movie) {
+  add(id, movie) {
+    if (this.exists(id)) return;
     this.myMovies[id] = movie;
-    console.log("Put: ", this.myMovies);
+    console.log("Add: ", this.myMovies);
     this.save();
   }
 
-  rem(id) {
+  remove(id) {
     delete this.myMovies[id];
     this.save();
   }
@@ -36,8 +37,63 @@ class MovieStorage
   }
 
   exists(id) {
-    console.log("Exists? " + this.myMovies[id]);
+    //console.log("Exists? " + this.myMovies[id]);
     return Boolean(this.myMovies[id]);
+  }
+
+  setRating(el) {
+
+    if (!movie) {
+      console.trace("MovieStorage setRating(): no movie?"); return; }
+
+    if (el.id && el.id.substring(0,4) != "star") {
+      console.trace("MovieStorage setRating(): rate without star?"); return; }
+
+    // ##### handle HTML CSS #####
+    this.clearDisplayRating(); // remove old rating
+    el.classList.add("selected"); // add class to display rating
+    el.setAttribute("data-toggle", "tooltip");
+    el.setAttribute("title", "Click to remove rating");
+
+    // save to localstorage
+    let movieId = $("#saveButton").getAttribute("data-id"); // get id from button
+
+    this.add(movieId, movie); // won't be overwritten if already exists
+    console.log("MovieStorage setRating(): ", movieId, el.id.substring(4,5));
+
+    let rating = el.id.substring(4,5);
+    if (isNaN(rating)) {
+      console.error("setRate(): rating isNaN; " + rating); return; }
+
+    console.log("setRate(): ", movieId, rating);
+    this.myMovies[movieId].userRating = Number(rating);
+    this.save();
+  }
+
+  getRating(id) {
+    if (!this.myMovies[id]) {
+        console.trace("MovieStorage getRating(): not such movie; " + id); return; }
+    //if (!this.myMovies[id].userRating) {
+    //    console.trace("MovieStorage getRating(): no rating for; " + myMovies[id].Title ); return; }
+    if (isNaN(this.myMovies[id].userRating)) {
+        console.trace("MovieStorage getRating(): rating is isNaN"); return; }
+
+    console.log("getRating(): ", id, this.myMovies[id] );
+    return this.myMovies[id].userRating;
+  }
+
+  clearDisplayRating() {
+    let el = $("#movie .stars-container");
+    let siblings = Array.from(el.querySelectorAll("*"));
+    if (siblings && siblings.length > 0)
+      siblings.forEach(sib => {
+        sib.classList.remove("selected");
+        sib.removeAttribute("data-toggle");
+        sib.removeAttribute("title");
+      });
+
+    // save to localstorage
+    console.log("Rating cleared from DOM");
   }
 
   save() {
@@ -45,7 +101,7 @@ class MovieStorage
     console.log("MovieStorage Save: ", this.myMovies);
     //console.log("Save (str): ", datastring);
     localStorage.setItem("myMovies", datastring);
-    this.display();
+    this.display(); // replaces all event listners???
   }
 
   display() {
@@ -73,11 +129,17 @@ class MovieStorage
       });
 
     $("#myMovies").innerHTML = html;
-    console.log("MovieStorage Display finished");
+
+    var movies = Array.from(document.getElementsByClassName("movie"));
+    movies.forEach(function(movie2) {
+        console.log("eventListener:", movie2);
+        movie2.addEventListener("click", getMovieData); // end of addEventListener
+    });
+
+    console.log("MovieStorage Display finished: " + Object.keys(this.myMovies).length);
   }
 
 } // end of class
-
 
 /* Funktionalitet för knappen [Titta senare]
   - spara filmen till localstorage
@@ -88,60 +150,35 @@ class MovieStorage
   - lägg till property "userRating" i objektet
 */
 
-class MovieRating
-{
-  set(el) {
-    this.rem(el);
-    el.classList.add("selected");
-    el.setAttribute("data-toggle", "tooltip");
-    el.setAttribute("title", "Click to remove rating");
-
-    // save to localstorage
-    console.log("Rated: " + el.id);
-  }
-
-  rem(el) {
-    let siblings = Array.from(el.parentElement.querySelectorAll("*"));
-    siblings.forEach(sib => sib.classList.remove("selected"));
-    el.removeAttribute("data-toggle");
-    el.removeAttribute("title");
-
-    // save to localstorage
-    console.log("Rating removed: " + el.id);
-  }
-}
-
 var movieStorage;
-var movieRating;
 
 window.addEventListener("load", function()
 {
   movieStorage = new MovieStorage();
-  movieRating = new MovieRating();
+  //movieRating = new MovieRating();
 
   // addEventListener on click saveButton
   $("#saveButton").addEventListener("click", function()
   {
     let movieId = this.getAttribute("data-id"); //get movieID from attribute
     console.log("click titta senare", movieId);
-    movieStorage.put(movieId, movie);
-    movieStorage.display();
+    movieStorage.add(movieId, movie);
   });
 
   // addEventListener on click Rating star
   $(".rate").forEach(el => el.addEventListener("click", function()
   {
     if (!this.classList.contains("selected")) // remove rating
-      movieRating.set(this);
+      movieStorage.setRating(this);
     else
-      movieRating.rem(this);
+      movieStorage.clearDisplayRating(this);
   }));
 
   // addEventListener on click Remove movie
   $("div[class='flex-item movie'] button").forEach( el => el.addEventListener("click", function(event) {
       let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
       console.log("Remove movie: ", movieId);
-      movieStorage.rem(movieId);
+      movieStorage.remove(movieId);
       event.stopPropagation(); // prevent trigger of parent click event
   }));
 
