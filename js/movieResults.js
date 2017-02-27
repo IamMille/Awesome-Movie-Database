@@ -41,13 +41,24 @@ window.addEventListener("load", function(){
         		console.log(movie);
         		console.log(movie.Title);
         		console.log(ajax.responseText);*/
-
+				
         		rubrik.innerHTML = `${movie.Title}`;
         		year.innerHTML = `${movie.Year} `;
         		plot.innerHTML = `${movie.Plot}`;
         		actors.innerHTML = `${movie.Actors}`;
         		genre.innerHTML = `${movie.Genre}`;
-        		poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
+				poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
+        		
+				if (movie.Poster == "N/A")
+					{
+						poster.innerHTML = `<img src="noPoster.jpg" width="150" />`;
+					}
+					else
+					{
+						poster.innerHTML = `<img src="${movie.Poster}" width="150" />`;
+					}
+						
+						
 
             // uppdaterar movieId i HTML-elementen
             $("#saveButton").setAttribute("data-id", movie.imdbID);
