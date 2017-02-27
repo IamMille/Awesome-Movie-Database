@@ -13,16 +13,12 @@
 
 }
 .stylish-input-group button{
-
 	border-radius: 20px;
     border:0;
     background:transparent;
 
 }
 
-#searchBar {
-	 
-}
 
 #imaginary_container {
 	margin: auto;
@@ -33,13 +29,10 @@
 
 
 .header {
-	/*background-color: #868686;*/
 	background-image: url("LOGO.png");
 	background-repeat: no-repeat;
 	background-position: center top;
-/*background-size: contain;	*/
-height: 200px;
-	/*position: relative;*/ 
+	height: 200px;
 	margin-bottom: 6%; 
 }
 
@@ -97,7 +90,6 @@ button {
 button:hover {
     background-color: #5cd65c;
     color: black;
-	/*text-shadow: 2px 2px 5px #2eb82e; */
 }
 
 #viewTrailer {
@@ -113,11 +105,7 @@ button:hover {
 }
 
 .logo{
-
-  /*margin-top: 25px;*/
-  padding:auto;
   text-align: center;
-
   max-width: 100%;
   height: auto;
 }
@@ -127,22 +115,10 @@ body {
     background-image:url("background1.png");
 	background-repeat: no-repeat;
 	background-position: center 50px;; 
-	
-	/*background-position: 0% 50%;*/
-	/*background-size: contain; */
-	
-	/*
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        height: 100%;*/
-
 	text-align: center;
 }
 
 .rubrik {
-	/*text-align: left;
-	margin: auto*/
 	position: relative;
 	font-family: Century Gothic;
 	font-weight: bold;
@@ -158,13 +134,8 @@ body {
 	color: #fd4b4b;
 	text-align: left;
 	padding-bottom: 7px;
-	/*margin-left: 10px;*/
 }
 
-p {
-	/*margin-left: 10px; */
-	
-}
 
 .savedMovies {
 	max-width: 700px;
@@ -180,8 +151,6 @@ p {
 	text-align: left;
 	padding: 10px;
 	padding-left: 30px;
-
-
 }
 
 .rate {
@@ -202,19 +171,13 @@ p {
 	display: flex;
 	flex-direction: row; 
 	flex-wrap: wrap; 
-	
-	
+
 }
 
 .flex-item {
 	flex: 1 1 auto;
-	/*border: 1px solid black;*/
 }
 
-.flex-center {
-	align-items: center;
-	justify-content: center;
-}
 
 @media (max-width: 700px) {
 	#movie {
@@ -246,7 +209,7 @@ p {
 @media (max-width: 565px) {
 	
 	.header {
-	/*background: linear-gradient(black, white;*/
+	
 	background-image: url("LOGOmini.png");
 	background-repeat: no-repeat;
 	background-position: center top;

@@ -56,6 +56,8 @@ window.addEventListener("load", function()
   // Hide trailerpopup on click
   $("#trailerPopup").addEventListener("click", function(){
 	   $("#trailerPopup").style.display = "none";
+	   
+	   $("#trailerPopup").innerHTML = "";
    });
 
 }); // en onLoad
