@@ -1,12 +1,7 @@
 
 window.addEventListener("load", function()
 {
-  let $ = function(str) { // local func to not polute global namespace
-    var els = document.querySelectorAll(str);
-    if (els.length === 1) return els[0];
-    else return Array.from(els);
-  };
-
+  
   $("#viewTrailer").addEventListener("click", function()
   {
     var query = $("#rubrik").innerText + " " + $("#year").innerText;
