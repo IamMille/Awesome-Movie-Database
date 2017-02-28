@@ -136,6 +136,10 @@ class MovieStorage
         movie2.addEventListener("click", getMovieData); // end of addEventListener
     });
 
+    $("div[class='flex-item movie'] button").forEach(
+      el => el.addEventListener("click", onClickCloseButton)
+    );
+
     console.log("MovieStorage Display finished: " + Object.keys(this.myMovies).length);
   }
 
@@ -175,18 +179,23 @@ window.addEventListener("load", function()
   }));
 
   // addEventListener on click Remove movie
-  $("div[class='flex-item movie'] button").forEach( el => el.addEventListener("click", function(event) {
-      let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
-      console.log("Remove movie: ", movieId);
-      movieStorage.remove(movieId);
-      event.stopPropagation(); // prevent trigger of parent click event
-
-      setTimeout(function() {
-         scrollTo(document.body, 0, 485);
-      }, 200);
-  }));
+  $("div[class='flex-item movie'] button").forEach(
+    el => el.addEventListener("click", onClickCloseButton)
+  );
 
 }); // LOAD end
+function onClickCloseButton(event) {
+  let el = event.target.parentElement;
+  console.log("onClickCloseButton", el);
+  let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
+  console.log("Remove movie: ", movieId);
+  movieStorage.remove(movieId);
+  event.stopPropagation(); // prevent trigger of parent click event
+
+  setTimeout(function() {
+     scrollTo(document.body, 0, 485);
+  }, 200);
+}
 
 function scrollTo(element, to, duration) {
       if (duration <= 0) return;
