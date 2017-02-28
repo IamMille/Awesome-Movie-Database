@@ -7,7 +7,7 @@ window.onload=function(){
     httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
-      alert('Jag ger upp');
+      alert('Now you broke the Internet. Do NOT do that again you twat');
       return false;
     }
     httpRequest.onreadystatechange = mSvar;
@@ -67,7 +67,7 @@ window.onload=function(){
 	  }
 	}
     } else {
-      alert('Fel igen.');
+      alert('Now you broke the Internet. Do NOT do that again you twat');
     }
   }
 }
