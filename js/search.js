@@ -11,6 +11,7 @@ window.onload=function(){
       return false;
     }
     httpRequest.onreadystatechange = mSvar;
+	console.log('https://www.omdbapi.com/?s='+tit.value+'&r=json')
     httpRequest.open('GET', 'https://www.omdbapi.com/?s='+tit.value+'&r=json');
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send();
@@ -35,6 +36,11 @@ window.onload=function(){
 	  show.style.display='block';
 	  jObj = JSON.parse(this.responseText);
 
+	  //console.log('search är: ', jObj.Search);
+	if (jObj.Search===undefined){
+		console.log('the property is not available...');
+	}else{
+		
 	  document.getElementById('sug1').innerHTML=JSON.stringify(jObj.Search[0].Title)+" - "+(jObj.Search[0].Year);
 	  document.getElementById('sug2').innerHTML=JSON.stringify(jObj.Search[1].Title)+" - "+(jObj.Search[1].Year);
 	  document.getElementById('sug3').innerHTML=JSON.stringify(jObj.Search[2].Title)+" - "+(jObj.Search[2].Year);
@@ -49,7 +55,8 @@ window.onload=function(){
 	  let id3=(jObj.Search[2].imdbID);
 	  let attID2=document.getElementById('sug3');
 	  attID2.setAttribute('data-id', id3);
-	 // console.log(attID,attID1,attID2);
+	 //console.log(search);
+	}
     } else {
       alert('Fel igen.');
     }
