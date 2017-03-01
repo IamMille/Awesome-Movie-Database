@@ -103,8 +103,7 @@ class MovieStorage
 
     // add eventListener to above
     div.querySelector('.movie').addEventListener('click', getMovieData);
-    div.classList.add('flash');
-    
+
     if (document.querySelectorAll("#myMovies .savedMovies").length > 0)
       $(".rubrik")[0].style.display = "block";
 
