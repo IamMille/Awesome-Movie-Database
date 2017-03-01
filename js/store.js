@@ -103,8 +103,9 @@ class MovieStorage
 
     // add eventListener to above
     div.querySelector('.movie').addEventListener('click', getMovieData);
-
-    if (document.querySelectorAll("#myMovies > .savedMovies").length > 0)
+    div.classList.add('flash');
+    
+    if (document.querySelectorAll("#myMovies .savedMovies").length > 0)
       $(".rubrik")[0].style.display = "block";
 
     if (document.querySelectorAll("#myMoviesRated .savedMovies") > 0)
@@ -129,7 +130,7 @@ class MovieStorage
                        .parentElement   // .savedMovies
                        .outerHTML = ''; // MSIE emove element
 
-     if (document.querySelectorAll("#myMovies > .savedMovies").length === 0)
+     if (document.querySelectorAll("#myMovies .savedMovies").length === 0)
        $(".rubrik")[0].style.display = "none";
 
      if (document.querySelectorAll("#myMoviesRated .savedMovies") === 0)
@@ -188,7 +189,8 @@ class MovieStorage
     this.clearRatingDisplay();
     let movieId = $("#saveButton").getAttribute("data-id");
     let movie = this.myMovies[movieId];
-    delete this.myMovies[movieId].userRating;
+    if (this.myMovies[movieId].userRating)
+      delete this.myMovies[movieId].userRating;
     this.delete(movieId);
     this.add(movieId, movie);
     this.store();
