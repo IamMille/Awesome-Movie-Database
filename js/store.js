@@ -44,7 +44,7 @@ class MovieStorage
 
   add(id, movie, rating, force) {
     if (this.exists(id) && force !== true) return;
-
+    
     // add to localStorage
     //console.log("MovieStorage Add: ", movie);
     this.myMovies[id] = movie;
@@ -104,6 +104,11 @@ class MovieStorage
     // add eventListener to above
     div.querySelector('.movie').addEventListener('click', getMovieData);
 
+    if (document.querySelectorAll("#myMovies > .savedMovies").length > 0)
+      $(".rubrik")[0].style.display = "block";
+
+    if (document.querySelectorAll("#myMoviesRated .savedMovies") > 0)
+      $(".rubrik")[1].style.display = "block";
   }
 
   delete(id) {
@@ -123,6 +128,12 @@ class MovieStorage
                        .parentElement   // .flex-container
                        .parentElement   // .savedMovies
                        .outerHTML = ''; // MSIE emove element
+
+     if (document.querySelectorAll("#myMovies > .savedMovies").length === 0)
+       $(".rubrik")[0].style.display = "none";
+
+     if (document.querySelectorAll("#myMoviesRated .savedMovies") === 0)
+       $(".rubrik")[1].style.display = "none";
 
     // delete from localStorage
     delete this.myMovies[id];

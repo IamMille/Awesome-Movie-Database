@@ -125,6 +125,7 @@ body {
 	font-size: 48px;
 	color: #4b4b4b;
 	color: rgba(75, 75, 75, 0.4);
+	display: none;
 }
 
 .smRubrik {
