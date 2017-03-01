@@ -116,14 +116,14 @@ class MovieStorage
     //console.log("Delete: ", id);
 
     let myMovies = $("#myMovies")
-                  .querySelector(`div[data-id="${id}"]`);
+                   .querySelector(`div[data-id="${id}"]`);
     if (myMovies) myMovies
                   .parentElement   // .flex-container
                   .parentElement   // .savedMovies
                   .outerHTML = ''; // MSIE emove element
 
     let myMoviesRated = $("#myMoviesRated")
-                  .querySelector(`div[data-id="${id}"]`);
+                        .querySelector(`div[data-id="${id}"]`);
     if (myMoviesRated) myMoviesRated
                        .parentElement   // .flex-container
                        .parentElement   // .savedMovies
@@ -176,8 +176,8 @@ class MovieStorage
         console.trace("MovieStorage getRating(): not such movie; " + id); return; }
     //if (!this.myMovies[id].userRating) {
     //    console.trace("MovieStorage getRating(): no rating for; " + myMovies[id].Title ); return; }
-    if (isNaN(this.myMovies[id].userRating)) {
-        console.trace("MovieStorage getRating(): rating is isNaN"); return; }
+    //if (isNaN(this.myMovies[id].userRating)) {
+    //    console.trace("MovieStorage getRating(): rating is isNaN"); return; }
 
     //console.log("getRating(): ", id, this.myMovies[id] );
     return this.myMovies[id].userRating;
@@ -190,6 +190,7 @@ class MovieStorage
     let movie = this.myMovies[movieId];
     if (this.myMovies[movieId].userRating)
       delete this.myMovies[movieId].userRating;
+    //console.log("clearRating(): ", movieId);
     this.delete(movieId);
     this.add(movieId, movie);
     this.store();
