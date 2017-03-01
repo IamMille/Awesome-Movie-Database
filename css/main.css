@@ -193,7 +193,11 @@ body {
 }
 .flex-item {
 	flex: 1 1 auto;
-	/*border: 1px solid black;*/
+}
+.savedMovies .flex-item:nth-child(2) {
+	flex: 1 1 auto;
+	text-align: right;
+	margin-right: 12px;
 }
 .flex-center {
 	align-items: center;

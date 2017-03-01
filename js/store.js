@@ -3,7 +3,10 @@
 let $ = function(str) {
   var els = document.querySelectorAll(str);
   if (els.length === 1 && str.indexOf("#") > -1) return els[0];
-  else return Array.from(els);
+  else if (els.length > 0) return Array.from(els);
+  else return [ document.createElement('xyz'),
+                document.createElement('xyz'),
+                document.createElement('xyz') ]; // dummy elements for forEach
 };
 
 class MovieStorage
@@ -80,15 +83,19 @@ class MovieStorage
         <div class="flex-item">
           <div class="rating">
               <span class="stars-container stars-container-view">
-                <span class="star "></span>
                 <span class="star"></span>
                 <span class="star"></span>
                 <span class="star"></span>
-                <span class="star selected"></span>
+                <span class="star"></span>
+                <span class="star"></span>
               </span>
           </div>
         </div>
       `;
+
+      let ratingInverted = (6 - movie.userRating);
+      div.querySelector(`.stars-container-view span:nth-child(${ratingInverted})`)
+         .classList.add('selected');
 
       if (!$("#myMoviesRated").querySelector(`div[data-id="${id}"]`))
         $("#myMoviesRated").appendChild(div);
@@ -101,11 +108,21 @@ class MovieStorage
 
   delete(id) {
 
-    let movieDiv = $("#myMovies").querySelector(`div[data-id="${id}"]`);
-    if (movieDiv) movieDiv
+    console.log("Delete: ", id);
+
+    let myMovies = $("#myMovies")
+                  .querySelector(`div[data-id="${id}"]`);
+    if (myMovies) myMovies
                   .parentElement   // .flex-container
                   .parentElement   // .savedMovies
                   .outerHTML = ''; // MSIE emove element
+
+    let myMoviesRated = $("#myMoviesRated")
+                  .querySelector(`div[data-id="${id}"]`);
+    if (myMoviesRated) myMoviesRated
+                       .parentElement   // .flex-container
+                       .parentElement   // .savedMovies
+                       .outerHTML = ''; // MSIE emove element
 
     // delete from localStorage
     delete this.myMovies[id];
@@ -138,9 +155,8 @@ class MovieStorage
     if (isNaN(rating)) {
       console.error("setRate(): rating isNaN; " + rating); return; }
 
-    console.log("setRate(): ", movieId, rating);
     this.delete(movieId);
-    this.add(movieId, movie, Number(rating), true ); // won't be overwritten if already exists
+    this.add(movieId, movie, Number(rating) ); // won't be overwritten if already exists
     this.store();
   }
 
@@ -156,11 +172,16 @@ class MovieStorage
     return this.myMovies[id].userRating;
   }
 
-  clearRating() {
+  clearRating(el) {
+    console.log("clearRating()");
     this.clearRatingDisplay();
-    delete this.myMovies[id].userRating;
+    let movieId = $("#saveButton").getAttribute("data-id");
+    delete this.myMovies[movieId].userRating;
+    this.delete(movieId);
+    this.add(movieId, this.myMovies[movieId]);
     this.store();
   }
+
   clearRatingDisplay() {
     let el = $("#movie .stars-container");
     let siblings = Array.from(el.querySelectorAll("*"));
@@ -202,12 +223,13 @@ window.addEventListener("load", function()
   });
 
   // addEventListener on click Rating star
-  $(".rate").forEach(el => el.addEventListener("click", function()
+  $(".rate").forEach(el => el.addEventListener("click", function(event)
   {
+    console.log(".rate click", event.target.id);
     if (!this.classList.contains("selected")) // remove rating
       movieStorage.setRating(this);
     else
-      movieStorage.clearRating(this);
+      movieStorage.clearRating(this); //this runs on re-rate
   }));
 
   // addEventListener on click Remove movie
