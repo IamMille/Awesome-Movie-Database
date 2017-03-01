@@ -4,7 +4,7 @@ window.addEventListener("load", function()
 {
   var movies = Array.from(document.getElementsByClassName("movie"));
   movies.forEach(function(movie2) {
-      console.log("eventListener:", movie2);
+      //console.log("eventListener:", movie2);
       movie2.addEventListener("click", getMovieData); // end of addEventListener
   }); // end of forEach movie
 });
@@ -62,7 +62,7 @@ function getMovieData() {
       $("#viewTrailer").setAttribute("data-id", movie.imdbID);
       //<button id="saveButton" data-id="">TITTA SENARE</button>
 
-      movieStorage.clearDisplayRating();
+      movieStorage.clearRatingDisplay();
 
       if (movieStorage.exists(movieId) &&
           movieStorage.getRating(movieId) > 0)

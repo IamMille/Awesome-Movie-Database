@@ -17,28 +17,103 @@ class MovieStorage
       this.myMovies = {};
 
     console.log("MovieStorage constructor(): ", this.myMovies);
-    this.display();
+
+    if (Object.keys(this.myMovies).length)
+      Object.keys(this.myMovies).forEach( key => {
+        let movie = this.myMovies[key];
+        this.add(key, movie, movie.userRating, true);
+
+      });
   }
 
-  add(id, movie) {
-    if (this.exists(id)) return;
-    this.myMovies[id] = movie;
-    console.log("Add: ", this.myMovies);
-    this.save();
-  }
-
-  remove(id) {
-    delete this.myMovies[id];
-    this.save();
-  }
-
-  get(id) {
-    return this.myMovies[id];
+  store() {
+    var datastring = JSON.stringify(this.myMovies);
+    console.log("MovieStorage Store: ", this.myMovies);
+    //console.log("Save (str): ", datastring);
+    localStorage.setItem("myMovies", datastring);
+    //this.display(); // replaces all event listners???
   }
 
   exists(id) {
     //console.log("Exists? " + this.myMovies[id]);
     return Boolean(this.myMovies[id]);
+  }
+
+  add(id, movie, rating, force) {
+    if (this.exists(id) && force !== true) return;
+
+    // add to localStorage
+    console.log("MovieStorage Add: ", movie);
+    this.myMovies[id] = movie;
+    this.myMovies[id].userRating = rating;
+    this.store();
+
+    // add to DOM
+    let div = document.createElement('div');
+    div.classList.add('savedMovies');
+
+    if (!rating)
+    {
+      div.innerHTML = `
+        <div class="flex-container">
+          <div class="flex-item movie"
+            data-id=${movie.imdbID}>
+            ${movie.Title} (${movie.Year})
+            <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      div.querySelector('.movie button').addEventListener('click', onClickCloseButton);
+      $("#myMovies").appendChild(div);
+    }
+
+    if (rating) {
+      div.innerHTML = `
+        <div class="flex-container">
+        <div class="flex-item movie"
+          data-id=${movie.imdbID}>
+          ${movie.Title} (${movie.Year})
+        </div>
+        <div class="flex-item">
+          <div class="rating">
+              <span class="stars-container stars-container-view">
+                <span class="star "></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star"></span>
+                <span class="star selected"></span>
+              </span>
+          </div>
+        </div>
+      `;
+
+      if (!$("#myMoviesRated").querySelector(`div[data-id="${id}"]`))
+        $("#myMoviesRated").appendChild(div);
+    }
+
+    // add eventListener to above
+    div.querySelector('.movie').addEventListener('click', getMovieData);
+
+  }
+
+  delete(id) {
+
+    let movieDiv = $("#myMovies").querySelector(`div[data-id="${id}"]`);
+    if (movieDiv) movieDiv
+                  .parentElement   // .flex-container
+                  .parentElement   // .savedMovies
+                  .outerHTML = ''; // MSIE emove element
+
+    // delete from localStorage
+    delete this.myMovies[id];
+    this.store();
+  }
+
+  get(id) {
+    return this.myMovies[id];
   }
 
   setRating(el) {
@@ -50,15 +125,13 @@ class MovieStorage
       console.trace("MovieStorage setRating(): rate without star?"); return; }
 
     // ##### handle HTML CSS #####
-    this.clearDisplayRating(); // remove old rating
+    this.clearRatingDisplay(); // remove old rating
     el.classList.add("selected"); // add class to display rating
     el.setAttribute("data-toggle", "tooltip");
     el.setAttribute("title", "Click to remove rating");
 
     // save to localstorage
     let movieId = $("#saveButton").getAttribute("data-id"); // get id from button
-
-    this.add(movieId, movie); // won't be overwritten if already exists
     console.log("MovieStorage setRating(): ", movieId, el.id.substring(4,5));
 
     let rating = el.id.substring(4,5);
@@ -66,8 +139,9 @@ class MovieStorage
       console.error("setRate(): rating isNaN; " + rating); return; }
 
     console.log("setRate(): ", movieId, rating);
-    this.myMovies[movieId].userRating = Number(rating);
-    this.save();
+    this.delete(movieId);
+    this.add(movieId, movie, Number(rating), true ); // won't be overwritten if already exists
+    this.store();
   }
 
   getRating(id) {
@@ -82,7 +156,12 @@ class MovieStorage
     return this.myMovies[id].userRating;
   }
 
-  clearDisplayRating() {
+  clearRating() {
+    this.clearRatingDisplay();
+    delete this.myMovies[id].userRating;
+    this.store();
+  }
+  clearRatingDisplay() {
     let el = $("#movie .stars-container");
     let siblings = Array.from(el.querySelectorAll("*"));
     if (siblings && siblings.length > 0)
@@ -94,53 +173,6 @@ class MovieStorage
 
     // save to localstorage
     console.log("Rating cleared from DOM");
-  }
-
-  save() {
-    var datastring = JSON.stringify(this.myMovies);
-    console.log("MovieStorage Save: ", this.myMovies);
-    //console.log("Save (str): ", datastring);
-    localStorage.setItem("myMovies", datastring);
-    this.display(); // replaces all event listners???
-  }
-
-  display() {
-    let html = "";
-
-    if (Object.keys(this.myMovies).length !== 0)
-      Object.keys(this.myMovies).forEach( key =>
-      {
-        let movie = this.myMovies[key];
-        console.log("MovieStorage Display: ", movie);
-
-        html += `
-          <div class="savedMovies">
-            <div class="flex-container">
-              <div class="flex-item movie"
-                data-id=${movie.imdbID}>
-                ${movie.Title} (${movie.Year})
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-      });
-
-    $("#myMovies").innerHTML = html;
-
-    var movies = Array.from(document.getElementsByClassName("movie"));
-    movies.forEach(function(movie2) {
-        console.log("eventListener:", movie2);
-        movie2.addEventListener("click", getMovieData); // end of addEventListener
-    });
-
-    $("div[class='flex-item movie'] button").forEach(
-      el => el.addEventListener("click", onClickCloseButton)
-    );
-
-    console.log("MovieStorage Display finished: " + Object.keys(this.myMovies).length);
   }
 
 } // end of class
@@ -175,7 +207,7 @@ window.addEventListener("load", function()
     if (!this.classList.contains("selected")) // remove rating
       movieStorage.setRating(this);
     else
-      movieStorage.clearDisplayRating(this);
+      movieStorage.clearRating(this);
   }));
 
   // addEventListener on click Remove movie
@@ -186,10 +218,12 @@ window.addEventListener("load", function()
 }); // LOAD end
 function onClickCloseButton(event) {
   let el = event.target.parentElement;
-  console.log("onClickCloseButton", el);
   let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
-  console.log("Remove movie: ", movieId);
-  movieStorage.remove(movieId);
+
+  console.log("Movie close button: ", movieId);
+
+  //$("#myMovies").querySelector(`div[data-id="tt0137523"]`)
+  movieStorage.delete(movieId);
   event.stopPropagation(); // prevent trigger of parent click event
 
   setTimeout(function() {
@@ -198,6 +232,7 @@ function onClickCloseButton(event) {
 }
 
 function scrollTo(element, to, duration) {
+      if (true) return;
       if (duration <= 0) return;
       var difference = to - element.scrollTop;
       var perTick = difference / duration * 10;
