@@ -11,7 +11,7 @@ window.addEventListener("load", function()
 
 function getMovieData() {
 
-  console.log("eventListener movie run:", this);
+  //console.log("eventListener movie run:", this);
   var movieId = this.getAttribute("data-id");
   // DOM-element som vi kommer att behöva
   let rubrik = document.getElementById("rubrik");
@@ -69,7 +69,7 @@ function getMovieData() {
             $("#movie #star" + movieStorage.getRating(movieId)).click();
 
       setTimeout(function() {
-         scrollTo(document.body, 0, 485);
+         scrollTo( document.getElementById("header") , 0, 485);
       }, 200);
     }
   };
