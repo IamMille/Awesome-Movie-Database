@@ -1,11 +1,11 @@
 var movie;
 
 window.addEventListener("load", function()
-{
+{  
   var movies = Array.from(document.getElementsByClassName("movie"));
   movies.forEach(function(movie2) {
       console.log("eventListener:", movie2);
-      movie2.addEventListener("click", getMovieData); // end of addEventListener
+      movie2.addEventListener("click", getMovieData); // end of addEventListener	  
   }); // end of forEach movie
 });
 
@@ -71,4 +71,6 @@ function getMovieData() {
     }
   };
   ajax.send();
+  let show=document.getElementById("movie");
+  show.style.display='block';
 }
