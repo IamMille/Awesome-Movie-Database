@@ -31,7 +31,7 @@ class MovieStorage
 
   store() {
     var datastring = JSON.stringify(this.myMovies);
-    console.log("MovieStorage Store: ", this.myMovies);
+    //console.log("MovieStorage Store: ", this.myMovies);
     //console.log("Save (str): ", datastring);
     localStorage.setItem("myMovies", datastring);
     //this.display(); // replaces all event listners???
@@ -46,7 +46,7 @@ class MovieStorage
     if (this.exists(id) && force !== true) return;
 
     // add to localStorage
-    console.log("MovieStorage Add: ", movie);
+    //console.log("MovieStorage Add: ", movie);
     this.myMovies[id] = movie;
     this.myMovies[id].userRating = rating;
     this.store();
@@ -108,7 +108,7 @@ class MovieStorage
 
   delete(id) {
 
-    console.log("Delete: ", id);
+    //console.log("Delete: ", id);
 
     let myMovies = $("#myMovies")
                   .querySelector(`div[data-id="${id}"]`);
@@ -149,7 +149,7 @@ class MovieStorage
 
     // save to localstorage
     let movieId = $("#saveButton").getAttribute("data-id"); // get id from button
-    console.log("MovieStorage setRating(): ", movieId, el.id.substring(4,5));
+    //console.log("MovieStorage setRating(): ", movieId, el.id.substring(4,5));
 
     let rating = el.id.substring(4,5);
     if (isNaN(rating)) {
@@ -168,12 +168,12 @@ class MovieStorage
     if (isNaN(this.myMovies[id].userRating)) {
         console.trace("MovieStorage getRating(): rating is isNaN"); return; }
 
-    console.log("getRating(): ", id, this.myMovies[id] );
+    //console.log("getRating(): ", id, this.myMovies[id] );
     return this.myMovies[id].userRating;
   }
 
   clearRating(el) {
-    console.log("clearRating()");
+    //console.log("clearRating()");
     this.clearRatingDisplay();
     let movieId = $("#saveButton").getAttribute("data-id");
     delete this.myMovies[movieId].userRating;
@@ -193,7 +193,7 @@ class MovieStorage
       });
 
     // save to localstorage
-    console.log("Rating cleared from DOM");
+    //console.log("Rating cleared from DOM");
   }
 
 } // end of class
@@ -218,14 +218,14 @@ window.addEventListener("load", function()
   $("#saveButton").addEventListener("click", function()
   {
     let movieId = this.getAttribute("data-id"); //get movieID from attribute
-    console.log("click titta senare", movieId);
+    //console.log("click titta senare", movieId);
     movieStorage.add(movieId, movie);
   });
 
   // addEventListener on click Rating star
   $(".rate").forEach(el => el.addEventListener("click", function(event)
   {
-    console.log(".rate click", event.target.id);
+    //console.log(".rate click", event.target.id);
     if (!this.classList.contains("selected")) // remove rating
       movieStorage.setRating(this);
     else
@@ -242,7 +242,7 @@ function onClickCloseButton(event) {
   let el = event.target.parentElement;
   let movieId = el.parentElement.getAttribute("data-id"); // where the data-id is
 
-  console.log("Movie close button: ", movieId);
+  //console.log("Movie close button: ", movieId);
 
   //$("#myMovies").querySelector(`div[data-id="tt0137523"]`)
   movieStorage.delete(movieId);
