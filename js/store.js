@@ -44,7 +44,7 @@ class MovieStorage
 
   add(id, movie, rating, force) {
     if (this.exists(id) && force !== true) return;
-    
+
     // add to localStorage
     //console.log("MovieStorage Add: ", movie);
     this.myMovies[id] = movie;
@@ -187,9 +187,10 @@ class MovieStorage
     //console.log("clearRating()");
     this.clearRatingDisplay();
     let movieId = $("#saveButton").getAttribute("data-id");
+    let movie = his.myMovies[movieId];
     delete this.myMovies[movieId].userRating;
     this.delete(movieId);
-    this.add(movieId, this.myMovies[movieId]);
+    this.add(movieId, movie);
     this.store();
   }
 
