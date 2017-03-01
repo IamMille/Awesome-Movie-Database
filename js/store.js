@@ -187,7 +187,7 @@ class MovieStorage
     //console.log("clearRating()");
     this.clearRatingDisplay();
     let movieId = $("#saveButton").getAttribute("data-id");
-    let movie = his.myMovies[movieId];
+    let movie = this.myMovies[movieId];
     delete this.myMovies[movieId].userRating;
     this.delete(movieId);
     this.add(movieId, movie);
