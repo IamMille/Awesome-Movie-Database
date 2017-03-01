@@ -3,19 +3,23 @@ window.onload=function(){
   var ent=document.getElementById("myButt");
   var httpRequest;
   
+  
  document.getElementById("myButt").onclick=function minRequest() {
     httpRequest = new XMLHttpRequest();
 
     if (!httpRequest) {
-      alert('Now you broke the Internet. Do NOT do that again you twat');
+      alert('NOW you broke the Internet. Do NOT do that again you twat');
       return false;
     }
+try{
     httpRequest.onreadystatechange = mSvar;
-	console.log('https://www.omdbapi.com/?s='+tit.value+'&r=json')
-    httpRequest.open('GET', 'https://www.omdbapi.com/?s='+tit.value+'&r=json');
+	//console.log('https://www.omdbapi.com/?s='+tit.value+'&r=json')
+    httpRequest.open('GET', 'https://www.omdbapi.com/?s='+tit.value+'&type=movie&r=json');
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send();
-
+}catch(e){ console.log('Något gick fel..')
+			httpRequest.abort();
+		}
   }
   tit.addEventListener("keypress", function(event){
 	  if (event.keyCode==13)
@@ -31,6 +35,7 @@ window.onload=function(){
 
   function mSvar() {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
+try{
     if (httpRequest.status === 200) {		
 	  let show=document.getElementById('searchResult');
 	  show.style.display='block';
@@ -49,10 +54,11 @@ window.onload=function(){
 	  if (jObj.Search[2]!==undefined){
 	  document.getElementById('sug3').innerHTML=JSON.stringify(jObj.Search[2].Title)+" - "+(jObj.Search[2].Year);
 	  }
+	  if (jObj.Search[0]!==undefined){
 	  let id1=(jObj.Search[0].imdbID);
 	  let attID=document.getElementById('sug1');
 	  attID.setAttribute('data-id', id1);
-	  
+	  }
 	  if (jObj.Search[1]!==undefined){
 	  let id2=(jObj.Search[1].imdbID);
 	  let attID1=document.getElementById('sug2');
@@ -62,13 +68,15 @@ window.onload=function(){
 	  let id3=(jObj.Search[2].imdbID);
 	  let attID2=document.getElementById('sug3');
 	  attID2.setAttribute('data-id', id3);
-	 //console.log(search);
-	 //console.log('search är: ', jObj.Search[0].Title);
+	 
 	  }
 	}
-    } else {
+    }else if (httpRequest.status === 500) {
+		httpRequest.abort();
+	}else {
       alert('Now you broke the Internet. Do NOT do that again you twat');
     }
+}catch(e){console.log('något gick fel');}
   }
 }
 }
