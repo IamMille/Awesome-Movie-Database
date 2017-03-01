@@ -68,7 +68,23 @@ function getMovieData() {
           movieStorage.getRating(movieId) > 0)
             $("#movie #star" + movieStorage.getRating(movieId)).click();
 
+      setTimeout(function() {
+         scrollTo(document.body, 0, 485);
+      }, 200);
     }
   };
   ajax.send();
+}
+
+function scrollTo(element, to, duration) {
+      //if (true) return;
+      if (duration <= 0) return;
+      var difference = to - element.scrollTop;
+      var perTick = difference / duration * 10;
+
+      setTimeout(function() {
+          element.scrollTop = element.scrollTop + perTick;
+          if (element.scrollTop === to) return;
+          scrollTo(element, to, duration - 10);
+      }, 10);
 }
