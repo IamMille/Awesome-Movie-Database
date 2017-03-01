@@ -9,7 +9,7 @@ window.addEventListener("load", function()
   }); // end of forEach movie
 });
 
-function getMovieData() {
+function getMovieData(event) {
 
   //console.log("eventListener movie run:", this);
   var movieId = this.getAttribute("data-id");
@@ -67,26 +67,9 @@ function getMovieData() {
       if (movieStorage.exists(movieId) &&
           movieStorage.getRating(movieId) > 0)
             $("#movie #star" + movieStorage.getRating(movieId)).click();
-
-      setTimeout(function() {
-         scrollTo( document.getElementById("header") , 0, 485);
-      }, 200);
     }
   };
   ajax.send();
   let show=document.getElementById("movie");
   show.style.display='block';
-}
-
-function scrollTo(element, to, duration) {
-      //if (true) return;
-      if (duration <= 0) return;
-      var difference = to - element.scrollTop;
-      var perTick = difference / duration * 10;
-
-      setTimeout(function() {
-          element.scrollTop = element.scrollTop + perTick;
-          if (element.scrollTop === to) return;
-          scrollTo(element, to, duration - 10);
-      }, 10);
 }
