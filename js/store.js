@@ -107,7 +107,7 @@ class MovieStorage
     if (document.querySelectorAll("#myMovies .savedMovies").length > 0)
       $(".rubrik")[0].style.display = "block";
 
-    if (document.querySelectorAll("#myMoviesRated .savedMovies") > 0)
+    if (document.querySelectorAll("#myMoviesRated .savedMovies").length > 0)
       $(".rubrik")[1].style.display = "block";
   }
 
@@ -132,7 +132,7 @@ class MovieStorage
      if (document.querySelectorAll("#myMovies .savedMovies").length === 0)
        $(".rubrik")[0].style.display = "none";
 
-     if (document.querySelectorAll("#myMoviesRated .savedMovies") === 0)
+     if (document.querySelectorAll("#myMoviesRated .savedMovies").length === 0)
        $(".rubrik")[1].style.display = "none";
 
     // delete from localStorage
